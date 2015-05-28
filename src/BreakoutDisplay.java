@@ -24,29 +24,29 @@ public class BreakoutDisplay extends JComponent {
 
         class MyMouseInputListener implements MouseInputListener {
             public void mousePressed(MouseEvent e) {
-                System.out.println("Pressed!");
+                //System.out.println("Pressed!");
                 repaint();
             }
             public void mouseReleased(MouseEvent e) {
-                System.out.println("Released!");
+                //System.out.println("Released!");
             }
             public void mouseClicked(MouseEvent e) {
-                System.out.println("Clicked!");
+                //System.out.println("Clicked!");
             }
             public void mouseEntered(MouseEvent e) {
-                System.out.println("Entered!");
+                //System.out.println("Entered!");
                 repaint();
             }
             public void mouseExited(MouseEvent e) {
-                System.out.println("Exited!");
+                //System.out.println("Exited!");
                 repaint();
             }
             public void mouseDragged(MouseEvent e) {
-                System.out.println("Dragged!");
+                //System.out.println("Dragged!");
                 repaint();
             }
             public void mouseMoved(MouseEvent e) {
-                System.out.println("Moved!");
+                //System.out.println("Moved!");
                 int x = e.getX();
                 paddle.setLocation(x,PADDLE_Y_POSITION);
                 repaint();
@@ -62,7 +62,7 @@ public class BreakoutDisplay extends JComponent {
     }
 
     public void paintComponent(Graphics g) {
-        System.out.println("paintComponent()");
+        //System.out.println("paintComponent()");
         Graphics2D g2 = (Graphics2D) g;
 
         g2.setColor(Color.GREEN.darker());
@@ -70,7 +70,6 @@ public class BreakoutDisplay extends JComponent {
         g2.setColor(Color.BLUE);
         g2.draw(paddle);
 
-        //ball.move();
         g2.setColor(Color.WHITE);
         g2.fill(ball);
     }
