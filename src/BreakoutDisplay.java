@@ -9,7 +9,16 @@ import java.awt.event.MouseEvent;
 public class BreakoutDisplay extends JComponent {
 
     private Paddle paddle;
+    private Ball ball;
+
+    private static final int PADDLE_X_POSITION = 100;
     private static final int PADDLE_Y_POSITION = 425;
+    private static final int PADDLE_LENGTH = 100;
+    private static final int PADDLE_HEIGHT = 15;
+
+    private static final int BALL_SIZE = 10;
+    private static final int BALL_X_POSITION = PADDLE_X_POSITION + PADDLE_LENGTH / 2 - BALL_SIZE / 2;
+    private static final int BALL_Y_POSITION = PADDLE_Y_POSITION - BALL_SIZE;
 
     public BreakoutDisplay() {
 
@@ -47,7 +56,8 @@ public class BreakoutDisplay extends JComponent {
         MyMouseInputListener myMouseInputListener = new MyMouseInputListener();
         addMouseListener(myMouseInputListener);
         addMouseMotionListener(myMouseInputListener);
-        paddle = new Paddle(PADDLE_Y_POSITION);
+        paddle = new Paddle(PADDLE_X_POSITION, PADDLE_Y_POSITION, PADDLE_LENGTH, PADDLE_HEIGHT);
+        ball = new Ball(BALL_X_POSITION, BALL_Y_POSITION, BALL_SIZE, BALL_SIZE);
 
     }
 
@@ -59,6 +69,11 @@ public class BreakoutDisplay extends JComponent {
         g2.fill(paddle);
         g2.setColor(Color.BLUE);
         g2.draw(paddle);
+
+        g2.setColor(Color.WHITE);
+        g2.fill(ball);
     }
+
+
 
 }

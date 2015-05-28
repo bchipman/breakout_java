@@ -5,10 +5,8 @@ import java.awt.*;
  */
 public class Paddle extends Rectangle {
 
-    private Rectangle paddle;
-
-    public Paddle(int PADDLE_Y_POSITION) {
-        super(100, PADDLE_Y_POSITION, 100, 15);
+    public Paddle(int startX, int startY, int width, int height) {
+        super(startX, startY, width, height);
     }
 
 }
