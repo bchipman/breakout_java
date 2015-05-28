@@ -70,8 +70,30 @@ public class BreakoutDisplay extends JComponent {
         g2.setColor(Color.BLUE);
         g2.draw(paddle);
 
+        //ball.move();
         g2.setColor(Color.WHITE);
         g2.fill(ball);
+    }
+
+    public void animate() {
+        class MyRunnable implements Runnable {
+            public void run() {
+                while (true) {
+                    ball.move();
+                    repaint();
+                    pause(15);
+                }
+            }
+        }
+        Thread t = new Thread(new MyRunnable());
+        t.start();
+    }
+
+    private void pause(int millisecs) {
+        try {
+            Thread.sleep(millisecs);
+        } catch (InterruptedException e) {
+        }
     }
 
 

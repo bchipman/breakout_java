@@ -7,6 +7,11 @@ public class Ball extends Rectangle {
 
     public Ball(int startX, int startY, int width, int height) {
         super(startX, startY, width, height);
+
+    }
+
+    public void move() {
+        y -= 1;
     }
 
 }

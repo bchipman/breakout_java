@@ -15,5 +15,7 @@ public class Breakout {
         Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImage, new Point(0,0), "blank cursor");
         frame.getContentPane().setCursor(blankCursor);
 
+        display.animate();
+
     }
 }
