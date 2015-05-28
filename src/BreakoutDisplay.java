@@ -50,7 +50,8 @@ public class BreakoutDisplay extends JComponent {
             public void mouseMoved(MouseEvent e) {
                 //System.out.println("Moved!");
                 int x = e.getX();
-                paddle.setLocation(x,PADDLE_Y_POSITION);
+                paddle.setLocation(x, PADDLE_Y_POSITION);
+                paddle.refresh();
                 repaint();
             }
         }
@@ -80,7 +81,7 @@ public class BreakoutDisplay extends JComponent {
         class MyRunnable implements Runnable {
             public void run() {
                 while (true) {
-                    ball.move();
+                    ball.refresh(paddle);
                     repaint();
                     pause(15);
                 }

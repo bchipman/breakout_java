@@ -25,11 +25,11 @@ public class Ball extends Rectangle {
         bottomEdge = y + height;
     }
 
-    public void move() {
-        x += xVelocity;
-        y += yVelocity;
+    public void refresh(Paddle paddle) {
+        translate(xVelocity, yVelocity);
         updateEdges();
-        checkForCollision();
+        checkForWallCollisions();
+        checkForPaddleCollision(paddle);
     }
 
     private void updateEdges() {
@@ -39,13 +39,18 @@ public class Ball extends Rectangle {
         bottomEdge = y + height;
     }
 
-    private void checkForCollision() {
+    private void checkForWallCollisions() {
         if (leftEdge <= Constants.WINDOW_LEFT_EDGE || rightEdge >= Constants.WINDOW_RIGHT_EDGE) {
             xVelocity *= REVERSE_DIRECTION;
         }
         if (topEdge <= Constants.WINDOW_TOP_EDGE || bottomEdge >= Constants.WINDOW_BOTTOM_EDGE) {
             yVelocity *= REVERSE_DIRECTION;
         }
+    }
+
+    private void checkForPaddleCollision(Paddle paddle) {
+
+
     }
 
 }
