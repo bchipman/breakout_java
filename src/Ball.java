@@ -20,20 +20,30 @@ public class Ball extends Rectangle {
         xVelocity = xStartVel;
         yVelocity = yStartVel;
         leftEdge = x;
-        rightEdge = x +
+        rightEdge = x + width;
+        topEdge = y;
+        bottomEdge = y + height;
     }
 
     public void move() {
         x += xVelocity;
         y += yVelocity;
+        updateEdges();
         checkForCollision();
     }
 
+    private void updateEdges() {
+        leftEdge = x;
+        rightEdge = x + width;
+        topEdge = y;
+        bottomEdge = y + height;
+    }
+
     private void checkForCollision() {
-        if (x <= Constants.WINDOW_LEFT_EDGE || x >= Constants.WINDOW_RIGHT_EDGE) {
+        if (leftEdge <= Constants.WINDOW_LEFT_EDGE || rightEdge >= Constants.WINDOW_RIGHT_EDGE) {
             xVelocity *= REVERSE_DIRECTION;
         }
-        if (y <= Constants.WINDOW_TOP_EDGE || y >= Constants.WINDOW_BOTTOM_EDGE) {
+        if (topEdge <= Constants.WINDOW_TOP_EDGE || bottomEdge >= Constants.WINDOW_BOTTOM_EDGE) {
             yVelocity *= REVERSE_DIRECTION;
         }
     }
