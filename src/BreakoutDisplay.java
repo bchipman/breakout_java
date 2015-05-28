@@ -19,6 +19,8 @@ public class BreakoutDisplay extends JComponent {
     private static final int BALL_SIZE = 10;
     private static final int BALL_X_POSITION = PADDLE_X_POSITION + PADDLE_LENGTH / 2 - BALL_SIZE / 2;
     private static final int BALL_Y_POSITION = PADDLE_Y_POSITION - BALL_SIZE;
+    private static final int BALL_X_VELOCITY = 1;
+    private static final int BALL_Y_VELOCITY = -2;
 
     public BreakoutDisplay() {
 
@@ -57,7 +59,7 @@ public class BreakoutDisplay extends JComponent {
         addMouseListener(myMouseInputListener);
         addMouseMotionListener(myMouseInputListener);
         paddle = new Paddle(PADDLE_X_POSITION, PADDLE_Y_POSITION, PADDLE_LENGTH, PADDLE_HEIGHT);
-        ball = new Ball(BALL_X_POSITION, BALL_Y_POSITION, BALL_SIZE, BALL_SIZE);
+        ball = new Ball(BALL_X_POSITION, BALL_Y_POSITION, BALL_SIZE, BALL_SIZE, BALL_X_VELOCITY, BALL_Y_VELOCITY);
 
     }
 

@@ -8,7 +8,7 @@ public class BreakoutFrame extends JFrame {
 
     public BreakoutFrame(String title) {
         super(title);
-        setSize(700, 500);
+        setSize(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setBackground(Color.DARK_GRAY);
         setVisible(true);
