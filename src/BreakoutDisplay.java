@@ -13,7 +13,7 @@ public class BreakoutDisplay extends JComponent {
 
     public BreakoutDisplay() {
 
-        class Cat implements MouseInputListener {
+        class MyMouseInputListener implements MouseInputListener {
             public void mousePressed(MouseEvent e) {
                 System.out.println("Pressed!");
                 repaint();
@@ -38,16 +38,15 @@ public class BreakoutDisplay extends JComponent {
             }
             public void mouseMoved(MouseEvent e) {
                 System.out.println("Moved!");
-
                 int x = e.getX();
                 paddle.setLocation(x,PADDLE_Y_POSITION);
                 repaint();
             }
         }
 
-        Cat cat = new Cat();
-        addMouseListener(cat);
-        addMouseMotionListener(cat);
+        MyMouseInputListener myMouseInputListener = new MyMouseInputListener();
+        addMouseListener(myMouseInputListener);
+        addMouseMotionListener(myMouseInputListener);
         paddle = new Paddle(PADDLE_Y_POSITION);
 
     }
