@@ -38,7 +38,7 @@ public class BreakoutDisplay extends JComponent {
                 //System.out.println("Clicked!");
                 if (e.getButton() == MouseEvent.BUTTON1) {
                     PAUSE_TIME += 5;
-                } else if (e.getButton() == MouseEvent.BUTTON2) {
+                } else if (e.getButton() == MouseEvent.BUTTON3) {
                     PAUSE_TIME -= 5;
                     PAUSE_TIME = (PAUSE_TIME < 0) ? 0 : PAUSE_TIME;
                 }
