@@ -21,11 +21,17 @@ public class Ball extends MyRectangle {
     }
 
     private void checkForWallCollisions() {
-        if (getLeftEdge() <= Constants.WINDOW_LEFT_EDGE || getRightEdge() >= Constants.WINDOW_RIGHT_EDGE) {
-            xVelocity *= REVERSE_DIRECTION;
+        if (getLeftEdge() <= Constants.WINDOW_LEFT_EDGE) {
+            xVelocity = Math.abs(xVelocity);
         }
-        if (getTopEdge() <= Constants.WINDOW_TOP_EDGE || getBottomEdge() >= Constants.WINDOW_BOTTOM_EDGE) {
-            yVelocity *= REVERSE_DIRECTION;
+        if (getRightEdge() >= Constants.WINDOW_RIGHT_EDGE) {
+            xVelocity = Math.abs(xVelocity) * -1;
+        }
+        if (getTopEdge() <= Constants.WINDOW_TOP_EDGE) {
+            yVelocity = Math.abs(yVelocity);
+        }
+        if (getBottomEdge() >= Constants.WINDOW_BOTTOM_EDGE) {
+            yVelocity = Math.abs(yVelocity) * -1;
         }
     }
 
@@ -36,19 +42,19 @@ public class Ball extends MyRectangle {
         boolean bottomRightHit = paddle.contains(getBottomRight());
 
         if (topLeftHit && bottomLeftHit) {
-            xVelocity *= REVERSE_DIRECTION;
+            xVelocity = Math.abs(xVelocity);
         }
 
         else if (topRightHit && bottomRightHit) {
-            xVelocity *= REVERSE_DIRECTION;
+            xVelocity = Math.abs(xVelocity) * -1;
         }
 
         else if (bottomLeftHit || bottomRightHit) {
-            yVelocity *= REVERSE_DIRECTION;
+            yVelocity = Math.abs(yVelocity) * -1;
         }
 
         else if (topLeftHit || topRightHit) {
-            yVelocity *= REVERSE_DIRECTION;
+            yVelocity = Math.abs(yVelocity);
         }
 
         //System.out.println(topLeftHit + " " + topRightHit + " " + bottomLeftHit + " " + bottomRightHit);
