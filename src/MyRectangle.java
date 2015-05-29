@@ -93,23 +93,23 @@ public class MyRectangle extends Rectangle {
     }
 
     public void setTopLeft(Point newTopLeft) {
-        x = newTopLeft.x;
-        y = newTopLeft.y;
+        setLeftEdge(newTopLeft.x);
+        setTopEdge(newTopLeft.y);
         update();
     }
     public void setTopRight(Point newTopRight) {
-        x = newTopRight.x;
-        y = newTopRight.y;
+        setRightEdge(newTopRight.x);
+        setTopEdge(newTopRight.y);
         update();
     }
     public void setBottomLeft(Point newBottomLeft) {
-        x = newBottomLeft.x;
-        y = newBottomLeft.y;
+        setLeftEdge(newBottomLeft.x);
+        setBottomEdge(newBottomLeft.y);
         update();
     }
     public void setBottomRight(Point newBottomRight) {
-        x = newBottomRight.x;
-        y = newBottomRight.y;
+        setRightEdge(newBottomRight.x);
+        setBottomEdge(newBottomRight.y);
         update();
     }
 }
