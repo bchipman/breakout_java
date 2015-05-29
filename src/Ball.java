@@ -1,5 +1,3 @@
-import java.awt.*;
-
 /**
  Created by Brian on 5/28/2015.
  */
@@ -18,9 +16,8 @@ public class Ball extends MyRectangle {
 
     public void refresh(Paddle paddle) {
         translate(xVelocity, yVelocity);
-        update();
         checkForWallCollisions();
-        checkForPaddleCollision(paddle);
+        checkForPaddleCollision1(paddle);
     }
 
     private void checkForWallCollisions() {
@@ -32,8 +29,26 @@ public class Ball extends MyRectangle {
         }
     }
 
-    private void checkForPaddleCollision(Paddle paddle) {
+    private void checkForPaddleCollision1(Paddle paddle) {
+        boolean topLeftHit = paddle.contains(getTopLeft());
+        boolean topRightHit = paddle.contains(getTopRight());
+        boolean bottomLeftHit = paddle.contains(getBottomLeft());
+        boolean bottomRightHit = paddle.contains(getBottomRight());
 
+        if (bottomLeftHit || bottomRightHit) {
+            yVelocity *= REVERSE_DIRECTION;
+        }
+        if (topLeftHit || topRightHit) {
+            yVelocity *= REVERSE_DIRECTION;
+        }
+
+    }
+
+    private void checkForPaddleCollision2(Paddle paddle) {
+        boolean rightEdgeInBetweenPaddle = paddle.getLeftEdge() <= getRightEdge() && paddle.getRightEdge() >= getRightEdge();
+        boolean leftEdgeInBetweenPaddle =paddle.getLeftEdge() <= getLeftEdge() && paddle.getRightEdge() >= getLeftEdge();
+        boolean topEdgeInBetweenPaddle = paddle.getTopEdge() <= getTopEdge() && paddle.getBottomEdge() >= getBottomEdge();
+        boolean bottomEdgeInBetweenPaddle = paddle.getTopEdge() <= getBottomEdge() && paddle.getBottomEdge() >= getTopEdge();
 
     }
 
