@@ -22,6 +22,8 @@ public class BreakoutDisplay extends JComponent {
     private static final int BALL_X_VELOCITY = 1;
     private static final int BALL_Y_VELOCITY = -2;
 
+    private int PAUSE_TIME = 15;
+
     public BreakoutDisplay() {
 
         class MyMouseInputListener implements MouseInputListener {
@@ -34,6 +36,12 @@ public class BreakoutDisplay extends JComponent {
             }
             public void mouseClicked(MouseEvent e) {
                 //System.out.println("Clicked!");
+                if (e.getButton() == MouseEvent.BUTTON1) {
+                    PAUSE_TIME += 5;
+                } else if (e.getButton() == MouseEvent.BUTTON2) {
+                    PAUSE_TIME -= 5;
+                    PAUSE_TIME = (PAUSE_TIME < 0) ? 0 : PAUSE_TIME;
+                }
             }
             public void mouseEntered(MouseEvent e) {
                 //System.out.println("Entered!");
@@ -82,7 +90,7 @@ public class BreakoutDisplay extends JComponent {
                 while (true) {
                     ball.refresh(paddle);
                     repaint();
-                    pause(15);
+                    pause(PAUSE_TIME);
                 }
             }
         }

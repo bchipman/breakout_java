@@ -42,6 +42,8 @@ public class Ball extends MyRectangle {
             yVelocity *= REVERSE_DIRECTION;
         }
 
+        //System.out.println(topLeftHit + " " + topRightHit + " " + bottomLeftHit + " " + bottomRightHit);
+
     }
 
     private void checkForPaddleCollision2(Paddle paddle) {
