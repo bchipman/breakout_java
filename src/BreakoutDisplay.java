@@ -28,14 +28,11 @@ public class BreakoutDisplay extends JComponent {
 
         class MyMouseInputListener implements MouseInputListener {
             public void mousePressed(MouseEvent e) {
-                //System.out.println("Pressed!");
                 repaint();
             }
             public void mouseReleased(MouseEvent e) {
-                //System.out.println("Released!");
             }
             public void mouseClicked(MouseEvent e) {
-                //System.out.println("Clicked!");
                 if (e.getButton() == MouseEvent.BUTTON1) {
                     PAUSE_TIME += 5;
                 } else if (e.getButton() == MouseEvent.BUTTON3) {
@@ -44,19 +41,15 @@ public class BreakoutDisplay extends JComponent {
                 }
             }
             public void mouseEntered(MouseEvent e) {
-                //System.out.println("Entered!");
                 repaint();
             }
             public void mouseExited(MouseEvent e) {
-                //System.out.println("Exited!");
                 repaint();
             }
             public void mouseDragged(MouseEvent e) {
-                //System.out.println("Dragged!");
                 repaint();
             }
             public void mouseMoved(MouseEvent e) {
-                //System.out.println("Moved!");
                 //paddle.setLocation(e.getX(), PADDLE_Y_POSITION);
                 paddle.setLocation(e.getX(), e.getY());
                 repaint();
@@ -72,7 +65,6 @@ public class BreakoutDisplay extends JComponent {
     }
 
     public void paintComponent(Graphics g) {
-        //System.out.println("paintComponent()");
         Graphics2D g2 = (Graphics2D) g;
 
         g2.setColor(Color.GREEN.darker());
