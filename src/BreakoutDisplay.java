@@ -12,9 +12,9 @@ public class BreakoutDisplay extends JComponent {
     private Ball ball;
 
     private static final int PADDLE_X_POSITION = 100;
-    private static final int PADDLE_Y_POSITION = 425;
+    private static final int PADDLE_Y_POSITION = 300;
     private static final int PADDLE_LENGTH = 100;
-    private static final int PADDLE_HEIGHT = 15;
+    private static final int PADDLE_HEIGHT = 100;
 
     private static final int BALL_SIZE = 10;
     private static final int BALL_X_POSITION = PADDLE_X_POSITION + PADDLE_LENGTH / 2 - BALL_SIZE / 2;

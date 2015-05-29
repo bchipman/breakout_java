@@ -35,10 +35,19 @@ public class Ball extends MyRectangle {
         boolean bottomLeftHit = paddle.contains(getBottomLeft());
         boolean bottomRightHit = paddle.contains(getBottomRight());
 
-        if (bottomLeftHit || bottomRightHit) {
+        if (topLeftHit && bottomLeftHit) {
+            xVelocity *= REVERSE_DIRECTION;
+        }
+
+        else if (topRightHit && bottomRightHit) {
+            xVelocity *= REVERSE_DIRECTION;
+        }
+
+        else if (bottomLeftHit || bottomRightHit) {
             yVelocity *= REVERSE_DIRECTION;
         }
-        if (topLeftHit || topRightHit) {
+
+        else if (topLeftHit || topRightHit) {
             yVelocity *= REVERSE_DIRECTION;
         }
 
