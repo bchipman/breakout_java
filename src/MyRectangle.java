@@ -80,7 +80,7 @@ public class MyRectangle extends Rectangle {
         update();
     }
     public void setRightEdge(int newRightEdge) {
-        x = newRightEdge;
+        x = newRightEdge - width;
         update();
     }
     public void setTopEdge(int newTopEdge) {
@@ -88,7 +88,7 @@ public class MyRectangle extends Rectangle {
         update();
     }
     public void setBottomEdge(int newBottomEdge) {
-        y = newBottomEdge;
+        y = newBottomEdge - height;
         update();
     }
 
