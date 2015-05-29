@@ -20,6 +20,21 @@ public class MyRectangle extends Rectangle {
         updatePoints();
     }
 
+    public void update() {
+        updateEdges();
+        updatePoints();
+    }
+
+    public void setLocation(int newX, int newY) {
+        super.setLocation(newX, newY);
+        update();
+    }
+
+    public void translate(int dx, int dy) {
+        super.translate(dx, dy);
+        update();
+    }
+
     private void updateEdges() {
         leftEdge = x;
         rightEdge = x + width;
@@ -62,47 +77,39 @@ public class MyRectangle extends Rectangle {
 
     public void setLeftEdge(int newLeftEdge) {
         x = newLeftEdge;
-        updateEdges();
-        updatePoints();
+        update();
     }
     public void setRightEdge(int newRightEdge) {
         x = newRightEdge;
-        updateEdges();
-        updatePoints();
+        update();
     }
     public void setTopEdge(int newTopEdge) {
         y = newTopEdge;
-        updateEdges();
-        updatePoints();
+        update();
     }
     public void setBottomEdge(int newBottomEdge) {
         y = newBottomEdge;
-        updateEdges();
-        updatePoints();
+        update();
     }
 
     public void setTopLeft(Point newTopLeft) {
         x = newTopLeft.x;
         y = newTopLeft.y;
-        updateEdges();
-        updatePoints();
+        update();
     }
     public void setTopRight(Point newTopRight) {
         x = newTopRight.x;
         y = newTopRight.y;
-        updateEdges();
-        updatePoints();
+        update();
     }
     public void setBottomLeft(Point newBottomLeft) {
         x = newBottomLeft.x;
         y = newBottomLeft.y;
-        updateEdges();
-        updatePoints();
+        update();
     }
     public void setBottomRight(Point newBottomRight) {
         x = newBottomRight.x;
         y = newBottomRight.y;
-        updateEdges();
-        updatePoints();
+        update();
     }
 }

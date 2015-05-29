@@ -51,7 +51,6 @@ public class BreakoutDisplay extends JComponent {
                 //System.out.println("Moved!");
                 int x = e.getX();
                 paddle.setLocation(x, PADDLE_Y_POSITION);
-                paddle.refresh();
                 repaint();
             }
         }
