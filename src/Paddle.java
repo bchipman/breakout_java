@@ -19,4 +19,28 @@ public class Paddle extends MyRectangle {
         }
     }
 
+    public void checkForBallCollision(Ball ball) {
+        boolean topLeftHit = contains(ball.getTopLeft());
+        boolean topRightHit = contains(ball.getTopRight());
+        boolean bottomLeftHit = contains(ball.getBottomLeft());
+        boolean bottomRightHit = contains(ball.getBottomRight());
+
+        if (topLeftHit && bottomLeftHit) {
+            ball.setLeftEdge(getRightEdge());
+        }
+
+        else if (topRightHit && bottomRightHit) {
+            ball.setRightEdge(getLeftEdge());
+        }
+
+        else if (bottomLeftHit || bottomRightHit) {
+            ball.setBottomEdge(getTopEdge());
+        }
+
+        else if (topLeftHit || topRightHit) {
+            ball.setTopEdge(getBottomEdge());
+        }
+
+    }
+
 }

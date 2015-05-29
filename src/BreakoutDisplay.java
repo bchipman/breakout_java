@@ -52,6 +52,7 @@ public class BreakoutDisplay extends JComponent {
             public void mouseMoved(MouseEvent e) {
                 //paddle.setLocation(e.getX(), PADDLE_Y_POSITION);
                 paddle.setLocation(e.getX(), e.getY());
+                paddle.checkForBallCollision(ball);
                 repaint();
             }
         }
