@@ -34,4 +34,75 @@ public class MyRectangle extends Rectangle {
         bottomRight = new Point(rightEdge, bottomEdge);
     }
 
+    public int getLeftEdge() {
+        return leftEdge;
+    }
+    public int getRightEdge() {
+        return rightEdge;
+    }
+    public int getTopEdge() {
+        return topEdge;
+    }
+    public int getBottomEdge() {
+        return bottomEdge;
+    }
+
+    public Point getTopLeft() {
+        return topLeft;
+    }
+    public Point getTopRight() {
+        return topRight;
+    }
+    public Point getBottomLeft() {
+        return bottomLeft;
+    }
+    public Point getBottomRight() {
+        return bottomRight;
+    }
+
+    public void setLeftEdge(int newLeftEdge) {
+        x = newLeftEdge;
+        updateEdges();
+        updatePoints();
+    }
+    public void setRightEdge(int newRightEdge) {
+        x = newRightEdge;
+        updateEdges();
+        updatePoints();
+    }
+    public void setTopEdge(int newTopEdge) {
+        y = newTopEdge;
+        updateEdges();
+        updatePoints();
+    }
+    public void setBottomEdge(int newBottomEdge) {
+        y = newBottomEdge;
+        updateEdges();
+        updatePoints();
+    }
+
+    public void setTopLeft(Point newTopLeft) {
+        x = newTopLeft.x;
+        y = newTopLeft.y;
+        updateEdges();
+        updatePoints();
+    }
+    public void setTopRight(Point newTopRight) {
+        x = newTopRight.x;
+        y = newTopRight.y;
+        updateEdges();
+        updatePoints();
+    }
+    public void setBottomLeft(Point newBottomLeft) {
+        x = newBottomLeft.x;
+        y = newBottomLeft.y;
+        updateEdges();
+        updatePoints();
+    }
+    public void setBottomRight(Point newBottomRight) {
+        x = newBottomRight.x;
+        y = newBottomRight.y;
+        updateEdges();
+        updatePoints();
+    }
 }
