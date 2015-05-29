@@ -14,7 +14,7 @@ public class Ball extends MyRectangle {
         yVelocity = yStartVel;
     }
 
-    public void refresh(Paddle paddle) {
+    public void move(Paddle paddle) {
         translate(xVelocity, yVelocity);
         checkForWallCollisions();
         checkForPaddleCollision1(paddle);

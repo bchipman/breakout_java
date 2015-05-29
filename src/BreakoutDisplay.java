@@ -80,7 +80,7 @@ public class BreakoutDisplay extends JComponent {
         class MyRunnable implements Runnable {
             public void run() {
                 while (true) {
-                    ball.refresh(paddle);
+                    ball.move(paddle);
                     repaint();
                     pause(PAUSE_TIME);
                 }
