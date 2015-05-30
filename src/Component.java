@@ -27,6 +27,16 @@ public class Component extends JComponent {
     private int PAUSE_TIME = 15;
     private boolean COLLISION_ON = true;
 
+    class MyKeyListener implements KeyListener {
+        public void keyTyped(KeyEvent e) {
+            System.out.println(e.getKeyChar());
+        }
+        public void keyPressed(KeyEvent e) {
+        }
+        public void keyReleased(KeyEvent e) {
+        }
+    }
+
     class MyMouseInputListener implements MouseInputListener {
         public void mousePressed(MouseEvent e) {
             repaint();
@@ -63,15 +73,6 @@ public class Component extends JComponent {
             repaint();
         }
     }
-    class MyKeyListener implements KeyListener {
-        public void keyTyped(KeyEvent e) {
-            System.out.println(e.getKeyChar());
-        }
-        public void keyPressed(KeyEvent e) {
-        }
-        public void keyReleased(KeyEvent e) {
-        }
-    }
 
     public Component() {
         MyKeyListener myKeyListener = new MyKeyListener();
@@ -83,6 +84,31 @@ public class Component extends JComponent {
 
         paddle = new Paddle(PADDLE_X_POSITION, PADDLE_Y_POSITION, PADDLE_LENGTH, PADDLE_HEIGHT);
         ball = new Ball(BALL_X_POSITION, BALL_Y_POSITION, BALL_SIZE, BALL_SIZE, BALL_X_VELOCITY, BALL_Y_VELOCITY);
+    }
+
+    public void animate() {
+        class MyRunnable implements Runnable {
+            public void run() {
+                while (true) {
+                    if (COLLISION_ON) {
+                        ball.move(paddle);
+                    } else {
+                        ball.move();
+                    }
+                    repaint();
+                    pause(PAUSE_TIME);
+                }
+            }
+        }
+        Thread t = new Thread(new MyRunnable());
+        t.start();
+    }
+
+    private void pause(int millisecs) {
+        try {
+            Thread.sleep(millisecs);
+        } catch (InterruptedException e) {
+        }
     }
 
     public void paintComponent(Graphics g) {
@@ -113,33 +139,5 @@ public class Component extends JComponent {
         g2.drawString("Paddle: bottomLeft: " + paddle.getBottomLeft(), 115, 75);
         g2.drawString("bottomRight: " + paddle.getBottomRight(), 425, 75);
     }
-
-    public void animate() {
-        class MyRunnable implements Runnable {
-            public void run() {
-                while (true) {
-                    if (COLLISION_ON) {
-                        ball.move(paddle);
-                    }
-                    else {
-                        ball.move();
-                    }
-                    repaint();
-                    pause(PAUSE_TIME);
-                }
-            }
-        }
-        Thread t = new Thread(new MyRunnable());
-        t.start();
-    }
-
-    private void pause(int millisecs) {
-        try {
-            Thread.sleep(millisecs);
-        } catch (InterruptedException e) {
-        }
-    }
-
-
 
 }
