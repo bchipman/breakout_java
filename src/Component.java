@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 /**
  Created by Brian on 5/28/2015.
  */
-public class BreakoutDisplay extends JComponent {
+public class Component extends JComponent {
 
     private Paddle paddle;
     private Ball ball;
@@ -25,7 +25,7 @@ public class BreakoutDisplay extends JComponent {
     private int PAUSE_TIME = 15;
     private boolean COLLISION_ON = true;
 
-    public BreakoutDisplay() {
+    public Component() {
 
         class MyMouseInputListener implements MouseInputListener {
             public void mousePressed(MouseEvent e) {

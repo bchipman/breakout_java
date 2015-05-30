@@ -1,7 +1,7 @@
 /**
  Created by Brian on 5/28/2015.
  */
-public class Ball extends MyRectangle {
+public class Ball extends Rect {
 
     private static final int REVERSE_DIRECTION = -1;
 

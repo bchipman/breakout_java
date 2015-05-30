@@ -4,9 +4,9 @@ import java.awt.*;
 /**
  Created by Brian on 5/27/2015.
  */
-public class BreakoutFrame extends JFrame {
+public class Frame extends JFrame {
 
-    public BreakoutFrame(String title) {
+    public Frame(String title) {
         super(title);
         setSize(Constants.SET_WINDOW_WIDTH, Constants.SET_WINDOW_HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

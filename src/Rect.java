@@ -3,7 +3,7 @@ import java.awt.*;
 /**
  Created by Brian on 5/28/2015.
  */
-public class MyRectangle extends Rectangle {
+public class Rect extends Rectangle {
 
     private int leftEdge;
     private int rightEdge;
@@ -14,7 +14,7 @@ public class MyRectangle extends Rectangle {
     private Point bottomLeft;
     private Point bottomRight;
 
-    public MyRectangle(int xStartPos, int yStartPos, int width, int height) {
+    public Rect(int xStartPos, int yStartPos, int width, int height) {
         super(xStartPos, yStartPos, width, height);
         updateEdges();
         updatePoints();

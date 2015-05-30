@@ -4,11 +4,11 @@ import java.awt.image.BufferedImage;
 /**
  Created by Brian on 5/15/2015.
  */
-public class Breakout {
+public class Main {
 
     public static void main(String[] args) {
-        BreakoutFrame frame = new BreakoutFrame("Breakout!");
-        BreakoutDisplay display = new BreakoutDisplay();
+        Frame frame = new Frame("Breakout!");
+        Component display = new Component();
         frame.add(display);
 
         BufferedImage cursorImage = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
