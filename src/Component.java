@@ -88,6 +88,10 @@ public class Component extends JComponent {
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
 
+        //System.out.println(g2.getFont());
+        Font font = new Font("Consolas", Font.PLAIN, 10);
+        g2.setFont(font);
+
         g2.setColor(Color.GREEN.darker());
         g2.fill(paddle);
         g2.setColor(Color.BLUE);
@@ -99,14 +103,14 @@ public class Component extends JComponent {
         g2.drawString("Pause: " + PAUSE_TIME, 10, 10);
         g2.drawString("Collision: " + COLLISION_ON, 10, 25);
 
-        g2.drawString("Ball: topLeft: " + ball.getTopLeft(), 150, 10);
-        g2.drawString("topRight: " + ball.getTopRight(), 400, 10);
-        g2.drawString("Ball: bottomLeft: " + ball.getBottomLeft(), 150, 25);
-        g2.drawString("bottomRight: " + ball.getBottomRight(), 400, 25);
+        g2.drawString("Ball:   topLeft:    " + ball.getTopLeft(), 115, 10);
+        g2.drawString("topRight:    " + ball.getTopRight(), 425, 10);
+        g2.drawString("Ball:   bottomLeft: " + ball.getBottomLeft(), 115, 25);
+        g2.drawString("bottomRight: " + ball.getBottomRight(), 425, 25);
 
-        g2.drawString("Paddle: topLeft: " + paddle.getTopLeft(), 150, 60);
-        g2.drawString("topRight: " + paddle.getTopRight(), 425, 60);
-        g2.drawString("Paddle: bottomLeft: " + paddle.getBottomLeft(), 150, 75);
+        g2.drawString("Paddle: topLeft:   " + paddle.getTopLeft(), 115, 60);
+        g2.drawString("topRight:    " + paddle.getTopRight(), 425, 60);
+        g2.drawString("Paddle: bottomLeft: " + paddle.getBottomLeft(), 115, 75);
         g2.drawString("bottomRight: " + paddle.getBottomRight(), 425, 75);
     }
 
