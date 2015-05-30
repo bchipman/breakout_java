@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.event.MouseInputListener;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 
 /**
@@ -25,51 +27,62 @@ public class Component extends JComponent {
     private int PAUSE_TIME = 15;
     private boolean COLLISION_ON = true;
 
-    public Component() {
-
-        class MyMouseInputListener implements MouseInputListener {
-            public void mousePressed(MouseEvent e) {
-                repaint();
-            }
-            public void mouseReleased(MouseEvent e) {
-            }
-            public void mouseClicked(MouseEvent e) {
-                if (e.getButton() == MouseEvent.BUTTON1) {
-                    PAUSE_TIME += 5;
-                } else if (e.getButton() == MouseEvent.BUTTON3) {
-                    PAUSE_TIME -= 5;
-                    PAUSE_TIME = (PAUSE_TIME < 0) ? 0 : PAUSE_TIME;
-                }
-                else if (e.getButton() == MouseEvent.BUTTON2) {
-                    COLLISION_ON = !COLLISION_ON;
-                }
-
-            }
-            public void mouseEntered(MouseEvent e) {
-                repaint();
-            }
-            public void mouseExited(MouseEvent e) {
-                repaint();
-            }
-            public void mouseDragged(MouseEvent e) {
-                repaint();
-            }
-            public void mouseMoved(MouseEvent e) {
-                //paddle.setLocation(e.getX(), PADDLE_Y_POSITION);
-                paddle.setLocation(e.getX(), e.getY());
-                if (COLLISION_ON) {
-                    paddle.checkForBallCollision(ball);
-                }
-                repaint();
-            }
+    class MyMouseInputListener implements MouseInputListener {
+        public void mousePressed(MouseEvent e) {
+            repaint();
         }
+        public void mouseReleased(MouseEvent e) {
+        }
+        public void mouseClicked(MouseEvent e) {
+            if (e.getButton() == MouseEvent.BUTTON1) {
+                PAUSE_TIME += 5;
+            } else if (e.getButton() == MouseEvent.BUTTON3) {
+                PAUSE_TIME -= 5;
+                PAUSE_TIME = (PAUSE_TIME < 0) ? 0 : PAUSE_TIME;
+            }
+            else if (e.getButton() == MouseEvent.BUTTON2) {
+                COLLISION_ON = !COLLISION_ON;
+            }
+
+        }
+        public void mouseEntered(MouseEvent e) {
+            repaint();
+        }
+        public void mouseExited(MouseEvent e) {
+            repaint();
+        }
+        public void mouseDragged(MouseEvent e) {
+            repaint();
+        }
+        public void mouseMoved(MouseEvent e) {
+            //paddle.setLocation(e.getX(), PADDLE_Y_POSITION);
+            paddle.setLocation(e.getX(), e.getY());
+            if (COLLISION_ON) {
+                paddle.checkForBallCollision(ball);
+            }
+            repaint();
+        }
+    }
+    class MyKeyListener implements KeyListener {
+        public void keyTyped(KeyEvent e) {
+            System.out.println(e.getKeyChar());
+        }
+        public void keyPressed(KeyEvent e) {
+        }
+        public void keyReleased(KeyEvent e) {
+        }
+    }
+
+    public Component() {
+        MyKeyListener myKeyListener = new MyKeyListener();
+        addKeyListener(myKeyListener);
 
         MyMouseInputListener myMouseInputListener = new MyMouseInputListener();
         addMouseListener(myMouseInputListener);
         addMouseMotionListener(myMouseInputListener);
+
         paddle = new Paddle(PADDLE_X_POSITION, PADDLE_Y_POSITION, PADDLE_LENGTH, PADDLE_HEIGHT);
         ball = new Ball(BALL_X_POSITION, BALL_Y_POSITION, BALL_SIZE, BALL_SIZE, BALL_X_VELOCITY, BALL_Y_VELOCITY);
-
     }
 
     public void paintComponent(Graphics g) {
