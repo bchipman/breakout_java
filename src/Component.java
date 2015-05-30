@@ -143,7 +143,7 @@ public class Component extends JComponent {
         g2.drawString("Ball:   bottomLeft: " + ball.getBottomLeft(), 115, 25);
         g2.drawString("bottomRight: " + ball.getBottomRight(), 425, 25);
 
-        g2.drawString("Paddle: topLeft:   " + paddle.getTopLeft(), 115, 60);
+        g2.drawString("Paddle: topLeft:    " + paddle.getTopLeft(), 115, 60);
         g2.drawString("topRight:    " + paddle.getTopRight(), 425, 60);
         g2.drawString("Paddle: bottomLeft: " + paddle.getBottomLeft(), 115, 75);
         g2.drawString("bottomRight: " + paddle.getBottomRight(), 425, 75);
