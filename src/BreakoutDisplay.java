@@ -82,6 +82,19 @@ public class BreakoutDisplay extends JComponent {
 
         g2.setColor(Color.WHITE);
         g2.fill(ball);
+
+        g2.drawString("Pause: " + PAUSE_TIME, 10, 10);
+        g2.drawString("Collision: " + COLLISION_ON, 10, 25);
+
+        g2.drawString("Ball: topLeft: " + ball.getTopLeft(), 150, 10);
+        g2.drawString("topRight: " + ball.getTopRight(), 400, 10);
+        g2.drawString("Ball: bottomLeft: " + ball.getBottomLeft(), 150, 25);
+        g2.drawString("bottomRight: " + ball.getBottomRight(), 400, 25);
+
+        g2.drawString("Paddle: topLeft: " + paddle.getTopLeft(), 150, 60);
+        g2.drawString("topRight: " + paddle.getTopRight(), 425, 60);
+        g2.drawString("Paddle: bottomLeft: " + paddle.getBottomLeft(), 150, 75);
+        g2.drawString("bottomRight: " + paddle.getBottomRight(), 425, 75);
     }
 
     public void animate() {
