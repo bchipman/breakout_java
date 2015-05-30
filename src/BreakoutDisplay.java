@@ -23,6 +23,7 @@ public class BreakoutDisplay extends JComponent {
     private static final int BALL_Y_VELOCITY = -2;
 
     private int PAUSE_TIME = 15;
+    private boolean COLLISION_ON = true;
 
     public BreakoutDisplay() {
 
@@ -39,6 +40,10 @@ public class BreakoutDisplay extends JComponent {
                     PAUSE_TIME -= 5;
                     PAUSE_TIME = (PAUSE_TIME < 0) ? 0 : PAUSE_TIME;
                 }
+                else if (e.getButton() == MouseEvent.BUTTON2) {
+                    COLLISION_ON = !COLLISION_ON;
+                }
+
             }
             public void mouseEntered(MouseEvent e) {
                 repaint();
@@ -52,7 +57,9 @@ public class BreakoutDisplay extends JComponent {
             public void mouseMoved(MouseEvent e) {
                 //paddle.setLocation(e.getX(), PADDLE_Y_POSITION);
                 paddle.setLocation(e.getX(), e.getY());
-                paddle.checkForBallCollision(ball);
+                if (COLLISION_ON) {
+                    paddle.checkForBallCollision(ball);
+                }
                 repaint();
             }
         }
@@ -81,7 +88,12 @@ public class BreakoutDisplay extends JComponent {
         class MyRunnable implements Runnable {
             public void run() {
                 while (true) {
-                    ball.move(paddle);
+                    if (COLLISION_ON) {
+                        ball.move(paddle);
+                    }
+                    else {
+                        ball.move();
+                    }
                     repaint();
                     pause(PAUSE_TIME);
                 }
