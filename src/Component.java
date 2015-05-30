@@ -34,6 +34,16 @@ public class Component extends JComponent {
             if (e.getKeyChar() == '`') {
                 DEBUG_TEXT_ON = !DEBUG_TEXT_ON;
             }
+            if (e.getKeyChar() == '-') {
+                PAUSE_TIME += 1;
+            }
+            if (e.getKeyChar() == '+' || e.getKeyChar() == '=') {
+                PAUSE_TIME -= 1;
+                PAUSE_TIME = (PAUSE_TIME < 1) ? 1 : PAUSE_TIME;
+            }
+            if (e.getKeyChar() == 'c' || e.getKeyChar() == 'C') {
+                COLLISION_ON = !COLLISION_ON;
+            }
         }
         public void keyPressed(KeyEvent e) {
         }
