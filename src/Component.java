@@ -138,15 +138,32 @@ public class Component extends JComponent {
         g2.drawString("Pause: " + PAUSE_TIME, 10, 10);
         g2.drawString("Collision: " + COLLISION_ON, 10, 25);
 
-        g2.drawString("Ball:   topLeft:    " + ball.getTopLeft(), 115, 10);
-        g2.drawString("topRight:    " + ball.getTopRight(), 425, 10);
-        g2.drawString("Ball:   bottomLeft: " + ball.getBottomLeft(), 115, 25);
-        g2.drawString("bottomRight: " + ball.getBottomRight(), 425, 25);
+        String paddleTop = String.valueOf(paddle.getTopEdge());
+        String paddleLeft = String.valueOf(paddle.getLeftEdge());
+        String paddleRight = String.valueOf(paddle.getRightEdge());
+        String paddleBottom = String.valueOf(paddle.getBottomEdge());
 
-        g2.drawString("Paddle: topLeft:    " + paddle.getTopLeft(), 115, 60);
-        g2.drawString("topRight:    " + paddle.getTopRight(), 425, 60);
-        g2.drawString("Paddle: bottomLeft: " + paddle.getBottomLeft(), 115, 75);
-        g2.drawString("bottomRight: " + paddle.getBottomRight(), 425, 75);
+        String ballTop = String.valueOf(ball.getTopEdge());
+        String ballLeft = String.valueOf(ball.getLeftEdge());
+        String ballRight = String.valueOf(ball.getRightEdge());
+        String ballBottom = String.valueOf(ball.getBottomEdge());
+
+        int paddleX = 150;
+        int paddleY = 35;
+        int ballX = 300;
+        int ballY = 35;
+
+        g2.drawString("paddle", paddleX, paddleY - 15);
+        g2.drawString(paddleTop, paddleX + 25, paddleY);
+        g2.drawString(paddleLeft, paddleX, paddleY + 15);
+        g2.drawString(paddleRight, paddleX + 50, paddleY + 15);
+        g2.drawString(paddleBottom, paddleX + 25, paddleY + 30);
+
+        g2.drawString("ball", ballX, ballY - 15);
+        g2.drawString(ballTop, ballX + 25, ballY);
+        g2.drawString(ballLeft, ballX, ballY + 15);
+        g2.drawString(ballRight, ballX + 50, ballY + 15);
+        g2.drawString(ballBottom, ballX + 25, ballY + 30);
 
     }
 
