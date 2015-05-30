@@ -26,10 +26,14 @@ public class Component extends JComponent {
 
     private int PAUSE_TIME = 15;
     private boolean COLLISION_ON = true;
+    private boolean DEBUG_TEXT_ON = true;
 
     class MyKeyListener implements KeyListener {
         public void keyTyped(KeyEvent e) {
             System.out.println(e.getKeyChar());
+            if (e.getKeyChar() == '`') {
+                DEBUG_TEXT_ON = !DEBUG_TEXT_ON;
+            }
         }
         public void keyPressed(KeyEvent e) {
         }
@@ -114,10 +118,6 @@ public class Component extends JComponent {
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
 
-        //System.out.println(g2.getFont());
-        Font font = new Font("Consolas", Font.PLAIN, 10);
-        g2.setFont(font);
-
         g2.setColor(Color.GREEN.darker());
         g2.fill(paddle);
         g2.setColor(Color.BLUE);
@@ -125,6 +125,15 @@ public class Component extends JComponent {
 
         g2.setColor(Color.WHITE);
         g2.fill(ball);
+
+        if (DEBUG_TEXT_ON) {
+            drawDebugText(g2);
+        }
+    }
+
+    private void drawDebugText(Graphics2D g2) {
+        Font font = new Font("Consolas", Font.PLAIN, 10);
+        g2.setFont(font);
 
         g2.drawString("Pause: " + PAUSE_TIME, 10, 10);
         g2.drawString("Collision: " + COLLISION_ON, 10, 25);
@@ -138,6 +147,7 @@ public class Component extends JComponent {
         g2.drawString("topRight:    " + paddle.getTopRight(), 425, 60);
         g2.drawString("Paddle: bottomLeft: " + paddle.getBottomLeft(), 115, 75);
         g2.drawString("bottomRight: " + paddle.getBottomRight(), 425, 75);
+
     }
 
 }
