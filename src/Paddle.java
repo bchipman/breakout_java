@@ -24,10 +24,6 @@ public class Paddle extends Rect {
         super(oldRect.x, oldRect.y, oldRect.width, oldRect.height);
     }
 
-    public String toString() {
-        return String.format("x=%d, y=%d, w=%d, h=%d  |  left=%d, right=%d, top=%d, bottom=%d  |  tl=%s, tr=%s, bl=%s, br=%s", x, y, width, height, getLeftEdge(), getRightEdge(), getTopEdge(), getBottomEdge(), String.valueOf(getTopLeft()), String.valueOf(getTopRight()), String.valueOf(getBottomLeft()), String.valueOf(getBottomRight()));
-    }
-
     public void setLocation(int newX, int newY) {
         int oldX = x;
         int oldY = y;

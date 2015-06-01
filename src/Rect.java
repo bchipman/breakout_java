@@ -38,6 +38,10 @@ public class Rect extends Rectangle {
         update();
     }
 
+    public String toString() {
+        return String.format("x=%d, y=%d, w=%d, h=%d  |  left=%d, right=%d, top=%d, bottom=%d  |  tl=%s, tr=%s, bl=%s, br=%s", x, y, width, height, getLeftEdge(), getRightEdge(), getTopEdge(), getBottomEdge(), String.valueOf(getTopLeft()), String.valueOf(getTopRight()), String.valueOf(getBottomLeft()), String.valueOf(getBottomRight()));
+    }
+
     public void update() {
         updateEdges();
         updatePoints();
