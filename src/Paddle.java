@@ -1,3 +1,5 @@
+import java.awt.*;
+
 /**
  Created by Brian on 5/28/2015.
  */
@@ -15,6 +17,16 @@ public class Paddle extends Rect {
         lastY = startY;
     }
 
+    public Paddle(Paddle oldPaddle) {
+        super(oldPaddle.x, oldPaddle.y, oldPaddle.width, oldPaddle.height);
+        lastX = oldPaddle.x;
+        lastY = oldPaddle.y;
+    }
+
+    public Paddle(Rectangle oldRect) {
+        super(oldRect.x, oldRect.y, oldRect.width, oldRect.height);
+    }
+
     public void setLocation(int newX, int newY) {
         lastX = x;
         lastY = y;
@@ -25,6 +37,10 @@ public class Paddle extends Rect {
         if (getBottomEdge() > Constants.WINDOW_BOTTOM_EDGE) {
             setBottomEdge(Constants.WINDOW_BOTTOM_EDGE);
         }
+    }
+
+    public Paddle union(Paddle paddleToUnion) {
+        return new Paddle(super.union(paddleToUnion));
     }
 
     public void checkForBallCollision(Ball ball) {

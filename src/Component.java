@@ -10,13 +10,15 @@ import java.awt.event.MouseEvent;
  */
 public class Component extends JComponent {
 
+    private Paddle oldPaddle;
+    private Paddle unionPaddle;
     private Paddle paddle;
     private Ball ball;
 
     private static final int PADDLE_X_POSITION = 100;
     private static final int PADDLE_Y_POSITION = 300;
     private static final int PADDLE_LENGTH = 100;
-    private static final int PADDLE_HEIGHT = 100;
+    private static final int PADDLE_HEIGHT = 10;
 
     private static final int BALL_SIZE = 10;
     private static final int BALL_X_POSITION = PADDLE_X_POSITION + PADDLE_LENGTH / 2 - BALL_SIZE / 2;
@@ -100,6 +102,9 @@ public class Component extends JComponent {
             repaint();
         }
         public void mouseMoved(MouseEvent e) {
+
+            oldPaddle = new Paddle(paddle);
+
             if (PADDLE_VERTICAL_MOVEMENT_ONLY) {
                 paddle.setLocation(paddle.x, e.getY());
             } else if (PADDLE_HORIZONTAL_MOVEMENT_ONLY) {
@@ -107,9 +112,13 @@ public class Component extends JComponent {
             } else {
                 paddle.setLocation(e.getX(), e.getY());
             }
+
+            unionPaddle = paddle.union(oldPaddle);
+
             if (COLLISION_ON) {
                 paddle.checkForBallCollision(ball);
             }
+
             repaint();
         }
     }
@@ -122,6 +131,8 @@ public class Component extends JComponent {
         addMouseListener(myMouseInputListener);
         addMouseMotionListener(myMouseInputListener);
 
+        oldPaddle = new Paddle(PADDLE_X_POSITION, PADDLE_Y_POSITION, PADDLE_LENGTH, PADDLE_HEIGHT);
+        unionPaddle = new Paddle(PADDLE_X_POSITION, PADDLE_Y_POSITION, PADDLE_LENGTH, PADDLE_HEIGHT);
         paddle = new Paddle(PADDLE_X_POSITION, PADDLE_Y_POSITION, PADDLE_LENGTH, PADDLE_HEIGHT);
         ball = new Ball(BALL_X_POSITION, BALL_Y_POSITION, BALL_SIZE, BALL_SIZE, BALL_X_VELOCITY, BALL_Y_VELOCITY);
     }
@@ -130,7 +141,6 @@ public class Component extends JComponent {
         class MyRunnable implements Runnable {
             public void run() {
                 while (true) {
-
                     if (BALL_MOVEMENT_ON) {
                         if (COLLISION_ON) {
                             ball.move(paddle);
@@ -156,6 +166,12 @@ public class Component extends JComponent {
 
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
+
+        g2.setColor(Color.GREEN.darker().darker());
+        g2.fill(unionPaddle);
+
+        g2.setColor(Color.GREEN.darker().darker().darker());
+        g2.fill(oldPaddle);
 
         g2.setColor(Color.GREEN.darker());
         g2.fill(paddle);
