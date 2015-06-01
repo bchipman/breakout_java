@@ -3,8 +3,6 @@
  */
 public class Ball extends Rect {
 
-    private static final int REVERSE_DIRECTION = -1;
-
     private int xVelocity;
     private int yVelocity;
 
@@ -56,16 +54,6 @@ public class Ball extends Rect {
         else if (topLeftHit || topRightHit) {
             yVelocity = Math.abs(yVelocity);
         }
-
-        //System.out.println(topLeftHit + " " + topRightHit + " " + bottomLeftHit + " " + bottomRightHit);
-
-    }
-
-    private void checkForPaddleCollision2(Paddle paddle) {
-        boolean rightEdgeInBetweenPaddle = paddle.getLeftEdge() <= getRightEdge() && paddle.getRightEdge() >= getRightEdge();
-        boolean leftEdgeInBetweenPaddle =paddle.getLeftEdge() <= getLeftEdge() && paddle.getRightEdge() >= getLeftEdge();
-        boolean topEdgeInBetweenPaddle = paddle.getTopEdge() <= getTopEdge() && paddle.getBottomEdge() >= getBottomEdge();
-        boolean bottomEdgeInBetweenPaddle = paddle.getTopEdge() <= getBottomEdge() && paddle.getBottomEdge() >= getTopEdge();
 
     }
 
