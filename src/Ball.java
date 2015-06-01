@@ -14,11 +14,6 @@ public class Ball extends Rect {
         yVelocity = yStartVel;
     }
 
-    public void move() {
-        translate(xVelocity, yVelocity);
-        checkForWallCollisions();
-    }
-
     public void move(Paddle paddle) {
         translate(xVelocity, yVelocity);
         checkForWallCollisions();

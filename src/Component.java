@@ -155,8 +155,6 @@ public class Component extends JComponent {
                     if (BALL_MOVEMENT_ON) {
                         if (COLLISION_ON) {
                             ball.move(unionPaddle);
-                        } else {
-                            ball.move();
                         }
                     }
                     repaint();
