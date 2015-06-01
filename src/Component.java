@@ -26,6 +26,8 @@ public class Component extends JComponent {
     private static final int BALL_X_VELOCITY = 1;
     private static final int BALL_Y_VELOCITY = -2;
 
+    private static final boolean PRINT_PADDLE_BALL_COLLISION_INFO = false;
+
     private int PAUSE_TIME = 15;
     private boolean COLLISION_ON = true;
     private boolean DEBUG_TEXT_ON = true;
@@ -33,6 +35,7 @@ public class Component extends JComponent {
     private boolean PADDLE_VERTICAL_MOVEMENT_ONLY = false;
     private boolean PADDLE_HORIZONTAL_MOVEMENT_ONLY = false;
     private boolean PRINT_PADDLE_INFO = false;
+
 
     class MyKeyListener implements KeyListener {
 
@@ -121,6 +124,10 @@ public class Component extends JComponent {
 
             if (COLLISION_ON) {
                 unionPaddle.checkForBallCollision(ball);
+            }
+
+            if (PRINT_PADDLE_BALL_COLLISION_INFO) {
+                unionPaddle.printPaddleBallCollisionInfo();
             }
 
             repaint();

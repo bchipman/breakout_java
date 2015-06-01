@@ -10,6 +10,7 @@ public class Paddle extends Rect {
     private enum Axis {
         X, Y
     }
+    private String collisionInfo;
 
     public Paddle(int startX, int startY, int width, int height) {
         super(startX, startY, width, height);
@@ -71,10 +72,10 @@ public class Paddle extends Rect {
         if ((ballRightSideHit && paddleMovingLeft) && (ballBottomSideHit && paddleMovingUp)) {
             if (largerChange == Axis.X) {
                 ball.setRightEdge(getLeftEdge());
-                System.out.println("Ball's RIGHT,BOTTOM sides hit while paddle moving LEFT,UP.  Setting to LEFT.");
+                collisionInfo = "Ball's RIGHT,BOTTOM sides hit while paddle moving LEFT,UP.  Setting to LEFT.";
             } else {
                 ball.setBottomEdge(getTopEdge());
-                System.out.println("Ball's RIGHT,BOTTOM sides hit while paddle moving LEFT,UP.  Setting to TOP.");
+                collisionInfo = "Ball's RIGHT,BOTTOM sides hit while paddle moving LEFT,UP.  Setting to TOP.";
             }
         }
 
@@ -82,10 +83,10 @@ public class Paddle extends Rect {
         else if ((ballLeftSideHit && paddleMovingRight) && (ballBottomSideHit && paddleMovingUp)) {
             if (largerChange == Axis.X) {
                 ball.setLeftEdge(getRightEdge());
-                System.out.println("Ball's LEFT,BOTTOM sides hit while paddle moving RIGHT,UP.  Setting to RIGHT.");
+                collisionInfo = "Ball's LEFT,BOTTOM sides hit while paddle moving RIGHT,UP.  Setting to RIGHT.";
             } else {
                 ball.setBottomEdge(getTopEdge());
-                System.out.println("Ball's LEFT,BOTTOM sides hit while paddle moving RIGHT,UP.  Setting to TOP.");
+                collisionInfo = "Ball's LEFT,BOTTOM sides hit while paddle moving RIGHT,UP.  Setting to TOP.";
             }
         }
 
@@ -93,10 +94,10 @@ public class Paddle extends Rect {
         else if ((ballRightSideHit && paddleMovingLeft) && (ballTopSideHit && paddleMovingDown)) {
             if (largerChange == Axis.X) {
                 ball.setRightEdge(getLeftEdge());
-                System.out.println("Ball's RIGHT,TOP sides hit while paddle moving LEFT,DOWN.  Setting to LEFT.");
+                collisionInfo = "Ball's RIGHT,TOP sides hit while paddle moving LEFT,DOWN.  Setting to LEFT.";
             } else {
                 ball.setTopEdge(getBottomEdge());
-                System.out.println("Ball's RIGHT,TOP sides hit while paddle moving LEFT,DOWN.  Setting to BOTTOM.");
+                collisionInfo = "Ball's RIGHT,TOP sides hit while paddle moving LEFT,DOWN.  Setting to BOTTOM.";
             }
         }
 
@@ -104,37 +105,43 @@ public class Paddle extends Rect {
         else if ((ballLeftSideHit && paddleMovingRight) && (ballTopSideHit && paddleMovingDown)) {
             if (largerChange == Axis.X) {
                 ball.setLeftEdge(getRightEdge());
-                System.out.println("Ball's LEFT,TOP sides hit while paddle moving RIGHT,DOWN.  Setting to RIGHT.");
+                collisionInfo = "Ball's LEFT,TOP sides hit while paddle moving RIGHT,DOWN.  Setting to RIGHT.";
             } else {
                 ball.setTopEdge(getBottomEdge());
-                System.out.println("Ball's LEFT,TOP sides hit while paddle moving RIGHT,DOWN.  Setting to BOTTOM.");
+                collisionInfo = "Ball's LEFT,TOP sides hit while paddle moving RIGHT,DOWN.  Setting to BOTTOM.";
             }
         }
 
         // Paddle moving LEFT
         else if (ballRightSideHit && paddleMovingLeft) {
             ball.setRightEdge(getLeftEdge());
-            System.out.println("Ball's RIGHT side hit while paddle moving LEFT.  Setting to LEFT");
+            collisionInfo = "Ball's RIGHT side hit while paddle moving LEFT.  Setting to LEFT";
         }
 
         // Paddle moving RIGHT
         else if (ballLeftSideHit && paddleMovingRight) {
             ball.setLeftEdge(getRightEdge());
-            System.out.println("Ball's LEFT side hit while paddle moving RIGHT.  Setting to RIGHT");
+            collisionInfo = "Ball's LEFT side hit while paddle moving RIGHT.  Setting to RIGHT";
         }
 
         // Paddle moving UP
         else if (ballBottomSideHit && paddleMovingUp) {
             ball.setBottomEdge(getTopEdge());
-            System.out.println("Ball's BOTTOM side hit while paddle moving UP.  Setting to TOP");
+            collisionInfo = "Ball's BOTTOM side hit while paddle moving UP.  Setting to TOP";
         }
 
         // Paddle moving DOWN
         else if (ballTopSideHit && paddleMovingDown) {
             ball.setTopEdge(getBottomEdge());
-            System.out.println("Ball's TOP side hit while paddle moving DOWN.  Setting to BOTTOM");
+            collisionInfo = "Ball's TOP side hit while paddle moving DOWN.  Setting to BOTTOM";
         }
 
     }
 
+    public void printPaddleBallCollisionInfo() {
+        if (collisionInfo != null) {
+            System.out.println(collisionInfo);
+        }
+        collisionInfo = null;
+    }
 }
