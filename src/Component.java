@@ -28,10 +28,12 @@ public class Component extends JComponent {
     private boolean COLLISION_ON = true;
     private boolean DEBUG_TEXT_ON = true;
     private boolean BALL_MOVEMENT_ON = true;
+    private boolean PADDLE_VERTICAL_MOVEMENT_ONLY = false;
+    private boolean PADDLE_HORIZONTAL_MOVEMENT_ONLY = false;
 
     class MyKeyListener implements KeyListener {
+
         public void keyTyped(KeyEvent e) {
-            System.out.println(e.getKeyChar());
             if (e.getKeyChar() == '`') {
                 DEBUG_TEXT_ON = !DEBUG_TEXT_ON;
             }
@@ -49,10 +51,25 @@ public class Component extends JComponent {
                 BALL_MOVEMENT_ON = !BALL_MOVEMENT_ON;
             }
         }
+
         public void keyPressed(KeyEvent e) {
+            if (e.getKeyChar() == 'v' || e.getKeyChar() == 'V') {
+                PADDLE_VERTICAL_MOVEMENT_ONLY = true;
+            }
+            if (e.getKeyChar() == 'h' || e.getKeyChar() == 'H') {
+                PADDLE_HORIZONTAL_MOVEMENT_ONLY = true;
+            }
         }
+
         public void keyReleased(KeyEvent e) {
+            if (e.getKeyChar() == 'v' || e.getKeyChar() == 'V') {
+                PADDLE_VERTICAL_MOVEMENT_ONLY = false;
+            }
+            if (e.getKeyChar() == 'h' || e.getKeyChar() == 'H') {
+                PADDLE_HORIZONTAL_MOVEMENT_ONLY = false;
+            }
         }
+
     }
 
     class MyMouseInputListener implements MouseInputListener {
@@ -83,8 +100,13 @@ public class Component extends JComponent {
             repaint();
         }
         public void mouseMoved(MouseEvent e) {
-            //paddle.setLocation(e.getX(), PADDLE_Y_POSITION);
-            paddle.setLocation(e.getX(), e.getY());
+            if (PADDLE_VERTICAL_MOVEMENT_ONLY) {
+                paddle.setLocation(paddle.x, e.getY());
+            } else if (PADDLE_HORIZONTAL_MOVEMENT_ONLY) {
+                paddle.setLocation(e.getX(), paddle.y);
+            } else {
+                paddle.setLocation(e.getX(), e.getY());
+            }
             if (COLLISION_ON) {
                 paddle.checkForBallCollision(ball);
             }
