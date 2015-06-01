@@ -23,6 +23,10 @@ public class Paddle extends Rect {
         super(oldRect.x, oldRect.y, oldRect.width, oldRect.height);
     }
 
+    public String toString() {
+        return String.format("x=%d, y=%d, w=%d, h=%d  |  left=%d, right=%d, top=%d, bottom=%d  |  tl=%s, tr=%s, bl=%s, br=%s", x, y, width, height, getLeftEdge(), getRightEdge(), getTopEdge(), getBottomEdge(), String.valueOf(getTopLeft()), String.valueOf(getTopRight()), String.valueOf(getBottomLeft()), String.valueOf(getBottomRight()));
+    }
+
     public void setLocation(int newX, int newY) {
         int oldX = x;
         int oldY = y;
@@ -37,13 +41,16 @@ public class Paddle extends Rect {
         }
     }
 
-    public void setVelocity(int xVel, int yVel) {
+    private void setVelocity(int xVel, int yVel) {
         this.xVel = xVel;
         this.yVel = yVel;
     }
 
-    public Paddle union(Paddle paddleToUnion) {
-        return new Paddle(super.union(paddleToUnion));
+    public Paddle union(Paddle prevPaddle) {
+        Paddle newPaddle = new Paddle(super.union(prevPaddle));
+        newPaddle.setVelocity(x-prevPaddle.x, y-prevPaddle.y);
+        newPaddle.update();
+        return newPaddle;
     }
 
     public void checkForBallCollision(Ball ball) {

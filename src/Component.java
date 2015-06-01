@@ -32,6 +32,7 @@ public class Component extends JComponent {
     private boolean BALL_MOVEMENT_ON = true;
     private boolean PADDLE_VERTICAL_MOVEMENT_ONLY = false;
     private boolean PADDLE_HORIZONTAL_MOVEMENT_ONLY = false;
+    private boolean PRINT_PADDLE_INFO = false;
 
     class MyKeyListener implements KeyListener {
 
@@ -51,6 +52,9 @@ public class Component extends JComponent {
             }
             if (e.getKeyChar() == 'm' || e.getKeyChar() == 'M') {
                 BALL_MOVEMENT_ON = !BALL_MOVEMENT_ON;
+            }
+            if (e.getKeyChar() == 'p' || e.getKeyChar() == 'P') {
+                PRINT_PADDLE_INFO = true;
             }
         }
 
@@ -116,7 +120,7 @@ public class Component extends JComponent {
             unionPaddle = paddle.union(oldPaddle);
 
             if (COLLISION_ON) {
-                paddle.checkForBallCollision(ball);
+                unionPaddle.checkForBallCollision(ball);
             }
 
             repaint();
@@ -143,7 +147,7 @@ public class Component extends JComponent {
                 while (true) {
                     if (BALL_MOVEMENT_ON) {
                         if (COLLISION_ON) {
-                            ball.move(paddle);
+                            ball.move(unionPaddle);
                         } else {
                             ball.move();
                         }
@@ -183,6 +187,17 @@ public class Component extends JComponent {
 
         if (DEBUG_TEXT_ON) {
             drawDebugText(g2);
+        }
+
+        if (PRINT_PADDLE_INFO) {
+            String s0 = String.valueOf(oldPaddle);
+            String s1 = String.valueOf(paddle);
+            String s2 = String.valueOf(unionPaddle);
+            System.out.println("oldPaddle:   " + s0);
+            System.out.println("paddle:      " + s1);
+            System.out.println("unionPaddle: " + s2);
+            System.out.println();
+            PRINT_PADDLE_INFO = false;
         }
     }
 
