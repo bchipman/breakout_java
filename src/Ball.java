@@ -39,18 +39,22 @@ public class Ball extends Rect {
         boolean bottomLeftHit = paddle.contains(getBottomLeft());
         boolean bottomRightHit = paddle.contains(getBottomRight());
 
+        // Ball's LEFT hit
         if (topLeftHit && bottomLeftHit) {
             xVelocity = Math.abs(xVelocity);
         }
 
+        // Ball's RIGHT hit
         else if (topRightHit && bottomRightHit) {
             xVelocity = Math.abs(xVelocity) * -1;
         }
 
+        // Ball's BOTTOM hit
         else if (bottomLeftHit || bottomRightHit) {
             yVelocity = Math.abs(yVelocity) * -1;
         }
 
+        // Ball's TOP hit
         else if (topLeftHit || topRightHit) {
             yVelocity = Math.abs(yVelocity);
         }
