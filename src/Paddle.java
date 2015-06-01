@@ -5,22 +5,18 @@ import java.awt.*;
  */
 public class Paddle extends Rect {
 
-    private int lastX;
-    private int lastY;
+    private int xVel;
+    private int yVel;
     private enum Axis {
         X, Y
     }
 
     public Paddle(int startX, int startY, int width, int height) {
         super(startX, startY, width, height);
-        lastX = startX;
-        lastY = startY;
     }
 
     public Paddle(Paddle oldPaddle) {
         super(oldPaddle.x, oldPaddle.y, oldPaddle.width, oldPaddle.height);
-        lastX = oldPaddle.x;
-        lastY = oldPaddle.y;
     }
 
     public Paddle(Rectangle oldRect) {
@@ -28,15 +24,22 @@ public class Paddle extends Rect {
     }
 
     public void setLocation(int newX, int newY) {
-        lastX = x;
-        lastY = y;
+        int oldX = x;
+        int oldY = y;
         super.setLocation(newX, newY);
+        setVelocity(x-oldX, y-oldY);
+
         if (getRightEdge() > Constants.WINDOW_RIGHT_EDGE) {
             setRightEdge(Constants.WINDOW_RIGHT_EDGE);
         }
         if (getBottomEdge() > Constants.WINDOW_BOTTOM_EDGE) {
             setBottomEdge(Constants.WINDOW_BOTTOM_EDGE);
         }
+    }
+
+    public void setVelocity(int xVel, int yVel) {
+        this.xVel = xVel;
+        this.yVel = yVel;
     }
 
     public Paddle union(Paddle paddleToUnion) {
@@ -49,8 +52,6 @@ public class Paddle extends Rect {
         boolean ballTopSideHit = contains(ball.getTopLeft()) && contains(ball.getTopRight());
         boolean ballBottomSideHit = contains(ball.getBottomLeft()) && contains(ball.getBottomRight());
 
-        int xVel = x - lastX;
-        int yVel = y - lastY;
         boolean paddleMovingLeft = (xVel < 0);
         boolean paddleMovingRight = (xVel > 0);
         boolean paddleMovingUp = (yVel < 0);
