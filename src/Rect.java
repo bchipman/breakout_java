@@ -25,8 +25,17 @@ public class Rect extends Rectangle {
 
     public Rect(int xStartPos, int yStartPos, int width, int height) {
         super(xStartPos, yStartPos, width, height);
-        updateEdges();
-        updatePoints();
+        update();
+    }
+
+    public Rect(Rect oldRect) {
+        super(oldRect.x, oldRect.y, oldRect.width, oldRect.height);
+        update();
+    }
+
+    public Rect(Rectangle oldRectangle) {
+        super(oldRectangle.x, oldRectangle.y, oldRectangle.width, oldRectangle.height);
+        update();
     }
 
     public void update() {
