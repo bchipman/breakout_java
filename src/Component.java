@@ -27,6 +27,7 @@ public class Component extends JComponent {
     private int PAUSE_TIME = 15;
     private boolean COLLISION_ON = true;
     private boolean DEBUG_TEXT_ON = true;
+    private boolean BALL_MOVEMENT_ON = true;
 
     class MyKeyListener implements KeyListener {
         public void keyTyped(KeyEvent e) {
@@ -43,6 +44,9 @@ public class Component extends JComponent {
             }
             if (e.getKeyChar() == 'c' || e.getKeyChar() == 'C') {
                 COLLISION_ON = !COLLISION_ON;
+            }
+            if (e.getKeyChar() == 'm' || e.getKeyChar() == 'M') {
+                BALL_MOVEMENT_ON = !BALL_MOVEMENT_ON;
             }
         }
         public void keyPressed(KeyEvent e) {
@@ -104,10 +108,13 @@ public class Component extends JComponent {
         class MyRunnable implements Runnable {
             public void run() {
                 while (true) {
-                    if (COLLISION_ON) {
-                        ball.move(paddle);
-                    } else {
-                        ball.move();
+
+                    if (BALL_MOVEMENT_ON) {
+                        if (COLLISION_ON) {
+                            ball.move(paddle);
+                        } else {
+                            ball.move();
+                        }
                     }
                     repaint();
                     pause(PAUSE_TIME);

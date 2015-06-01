@@ -25,18 +25,22 @@ public class Paddle extends Rect {
 
         if (topLeftHit && bottomLeftHit) {
             ball.setLeftEdge(getRightEdge());
+            System.out.println("Ball's LEFT side hit!");
         }
 
         else if (topRightHit && bottomRightHit) {
             ball.setRightEdge(getLeftEdge());
+            System.out.println("Ball's RIGHT side hit!");
         }
 
         else if (bottomLeftHit || bottomRightHit) {
             ball.setBottomEdge(getTopEdge());
+            System.out.println("Ball's BOTTOM side hit!");
         }
 
         else if (topLeftHit || topRightHit) {
             ball.setTopEdge(getBottomEdge());
+            System.out.println("Ball's TOP side hit!");
         }
 
     }
