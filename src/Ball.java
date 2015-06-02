@@ -1,35 +1,30 @@
 /**
  Created by Brian on 5/28/2015.
  */
-public class Ball extends Rect {
-
-    private int xVelocity;
-    private int yVelocity;
+public class Ball extends MovingRect {
 
     public Ball(int xStartPos, int yStartPos, int width, int height, int xStartVel, int yStartVel) {
-        super(xStartPos, yStartPos, width, height);
-        xVelocity = xStartVel;
-        yVelocity = yStartVel;
+        super(xStartPos, yStartPos, width, height, xStartVel, yStartVel);
     }
 
     public void move(Paddle paddle) {
-        translate(xVelocity, yVelocity);
+        translate(getxVel(), getyVel());
         checkForWallCollisions();
         checkForPaddleCollision1(paddle);
     }
 
     private void checkForWallCollisions() {
         if (getLeftEdge() <= Constants.WINDOW_LEFT_EDGE) {
-            xVelocity = Math.abs(xVelocity);
+            setxVel(Math.abs(getxVel()));
         }
         if (getRightEdge() >= Constants.WINDOW_RIGHT_EDGE) {
-            xVelocity = Math.abs(xVelocity) * -1;
+            setxVel(Math.abs(getxVel()) * -1);
         }
         if (getTopEdge() <= Constants.WINDOW_TOP_EDGE) {
-            yVelocity = Math.abs(yVelocity);
+            setyVel(Math.abs(getyVel()));
         }
         if (getBottomEdge() >= Constants.WINDOW_BOTTOM_EDGE) {
-            yVelocity = Math.abs(yVelocity) * -1;
+            setyVel(Math.abs(getyVel()) * -1);
         }
     }
 
@@ -41,22 +36,22 @@ public class Ball extends Rect {
 
         // Ball's LEFT hit
         if (topLeftHit && bottomLeftHit) {
-            xVelocity = Math.abs(xVelocity);
+            setxVel(Math.abs(getxVel()));
         }
 
         // Ball's RIGHT hit
         else if (topRightHit && bottomRightHit) {
-            xVelocity = Math.abs(xVelocity) * -1;
+            setxVel(Math.abs(getxVel()) * -1);
         }
 
         // Ball's BOTTOM hit
         else if (bottomLeftHit || bottomRightHit) {
-            yVelocity = Math.abs(yVelocity) * -1;
+            setyVel(Math.abs(getyVel()) * -1);
         }
 
         // Ball's TOP hit
         else if (topLeftHit || topRightHit) {
-            yVelocity = Math.abs(yVelocity);
+            setyVel(Math.abs(getyVel()));
         }
 
     }
