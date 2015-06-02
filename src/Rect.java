@@ -14,7 +14,7 @@ public class Rect extends Rectangle {
     private MyPoint bottomLeft;
     private MyPoint bottomRight;
 
-    private class MyPoint extends Point {
+    protected class MyPoint extends Point {
         public MyPoint(int newX, int newY) {
             super(newX, newY);
         }
