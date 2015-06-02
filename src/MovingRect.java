@@ -7,6 +7,12 @@ public class MovingRect extends Rect {
     private int xVel;
     private int yVel;
 
+    public MovingRect(int xStartPos, int yStartPos, int width, int height) {
+        super(xStartPos, yStartPos, width, height);
+        xVel = 0;
+        yVel = 0;
+    }
+
     public MovingRect(int xStartPos, int yStartPos, int width, int height, int xStartVel, int yStartVel) {
         super(xStartPos, yStartPos, width, height);
         xVel = xStartVel;

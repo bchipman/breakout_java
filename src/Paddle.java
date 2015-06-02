@@ -3,10 +3,8 @@ import java.awt.*;
 /**
  Created by Brian on 5/28/2015.
  */
-public class Paddle extends Rect {
+public class Paddle extends MovingRect {
 
-    private int xVel;
-    private int yVel;
     private enum Axis {
         X, Y
     }
@@ -28,7 +26,7 @@ public class Paddle extends Rect {
         int oldX = x;
         int oldY = y;
         super.setLocation(newX, newY);
-        setVelocity(x-oldX, y-oldY);
+        setVel(x - oldX, y - oldY);
 
         if (getRightEdge() > Constants.WINDOW_RIGHT_EDGE) {
             setRightEdge(Constants.WINDOW_RIGHT_EDGE);
@@ -38,14 +36,9 @@ public class Paddle extends Rect {
         }
     }
 
-    private void setVelocity(int xVel, int yVel) {
-        this.xVel = xVel;
-        this.yVel = yVel;
-    }
-
     public Paddle union(Paddle prevPaddle) {
         Paddle newPaddle = new Paddle(super.union(prevPaddle));
-        newPaddle.setVelocity(x-prevPaddle.x, y-prevPaddle.y);
+        newPaddle.setVel(x - prevPaddle.x, y - prevPaddle.y);
         newPaddle.update();
         return newPaddle;
     }
@@ -56,12 +49,12 @@ public class Paddle extends Rect {
         boolean ballTopSideHit = contains(ball.getTopLeft()) && contains(ball.getTopRight());
         boolean ballBottomSideHit = contains(ball.getBottomLeft()) && contains(ball.getBottomRight());
 
-        boolean paddleMovingLeft = (xVel < 0);
-        boolean paddleMovingRight = (xVel > 0);
-        boolean paddleMovingUp = (yVel < 0);
-        boolean paddleMovingDown = (yVel > 0);
+        boolean paddleMovingLeft = (getxVel() < 0);
+        boolean paddleMovingRight = (getxVel() > 0);
+        boolean paddleMovingUp = (getyVel() < 0);
+        boolean paddleMovingDown = (getyVel() > 0);
 
-        Axis largerChange = Math.abs(xVel) > Math.abs(yVel) ? Axis.X : Axis.Y;
+        Axis largerChange = Math.abs(getxVel()) > Math.abs(getyVel()) ? Axis.X : Axis.Y;
 
 
         // Paddle moving LEFT UP
