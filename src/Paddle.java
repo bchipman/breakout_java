@@ -27,7 +27,10 @@ public class Paddle extends MovingRect {
         int oldY = y;
         super.setLocation(newX, newY);
         setVel(x - oldX, y - oldY);
+        checkForWallCollisions();
+    }
 
+    private void checkForWallCollisions() {
         if (getRightEdge() > Constants.WINDOW_RIGHT_EDGE) {
             setRightEdge(Constants.WINDOW_RIGHT_EDGE);
         }
