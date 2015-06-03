@@ -7,6 +7,11 @@ public class Ball extends MovingRect {
         super(xStartPos, yStartPos, width, height, xStartVel, yStartVel);
     }
 
+    public void move() {
+        translate(getxVel(), getyVel());
+        checkForWallCollisions();
+    }
+
     public void move(Paddle paddle) {
         translate(getxVel(), getyVel());
         checkForWallCollisions();

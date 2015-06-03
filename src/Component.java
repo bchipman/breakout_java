@@ -23,12 +23,12 @@ public class Component extends JComponent {
     private static final int BALL_SIZE = 10;
     private static final int BALL_X_POSITION = PADDLE_X_POSITION + PADDLE_LENGTH / 2 - BALL_SIZE / 2;
     private static final int BALL_Y_POSITION = PADDLE_Y_POSITION - BALL_SIZE;
-    private static final int BALL_X_VELOCITY = 10;
-    private static final int BALL_Y_VELOCITY = -20;
+    private static final int BALL_X_VELOCITY = 1;
+    private static final int BALL_Y_VELOCITY = -2;
 
     private static final boolean PRINT_PADDLE_BALL_COLLISION_INFO = false;
 
-    private int PAUSE_TIME = 250;
+    private int PAUSE_TIME = 15;
     private boolean COLLISION_ON = true;
     private boolean DEBUG_TEXT_ON = true;
     private boolean BALL_MOVEMENT_ON = true;
@@ -155,6 +155,8 @@ public class Component extends JComponent {
                     if (BALL_MOVEMENT_ON) {
                         if (COLLISION_ON) {
                             ball.move(unionPaddle);
+                        } else {
+                            ball.move();
                         }
                     }
                     repaint();
