@@ -29,19 +29,19 @@ public class Component extends JComponent {
     private static final boolean PRINT_PADDLE_BALL_COLLISION_INFO = false;
 
     private int PAUSE_TIME = 15;
-    private boolean COLLISION_ON = true;
-    private boolean DEBUG_TEXT_ON = true;
-    private boolean BALL_MOVEMENT_ON = true;
-    private boolean PADDLE_VERTICAL_MOVEMENT_ONLY = false;
-    private boolean PADDLE_HORIZONTAL_MOVEMENT_ONLY = false;
-    private boolean PRINT_PADDLE_INFO = false;
+    //private boolean COLLISION_ON = true;
+    //private boolean DEBUG_TEXT_ON = true;
+    //private boolean BALL_MOVEMENT_ON = true;
+    //private boolean PADDLE_VERTICAL_MOVEMENT_ONLY = false;
+    //private boolean PADDLE_HORIZONTAL_MOVEMENT_ONLY = false;
+    //private boolean PRINT_PADDLE_INFO = false;
 
 
     class MyKeyListener implements KeyListener {
 
         public void keyTyped(KeyEvent e) {
             if (e.getKeyChar() == '`') {
-                DEBUG_TEXT_ON = !DEBUG_TEXT_ON;
+                Globals.DEBUG_TEXT_ON = !Globals.DEBUG_TEXT_ON;
             }
             if (e.getKeyChar() == '-') {
                 PAUSE_TIME += 1;
@@ -51,31 +51,31 @@ public class Component extends JComponent {
                 PAUSE_TIME = (PAUSE_TIME < 1) ? 1 : PAUSE_TIME;
             }
             if (e.getKeyChar() == 'c' || e.getKeyChar() == 'C') {
-                COLLISION_ON = !COLLISION_ON;
+                Globals.COLLISION_ON = !Globals.COLLISION_ON;
             }
             if (e.getKeyChar() == 'm' || e.getKeyChar() == 'M') {
-                BALL_MOVEMENT_ON = !BALL_MOVEMENT_ON;
+                Globals.BALL_MOVEMENT_ON = !Globals.BALL_MOVEMENT_ON;
             }
             if (e.getKeyChar() == 'p' || e.getKeyChar() == 'P') {
-                PRINT_PADDLE_INFO = true;
+                Globals.PRINT_PADDLE_INFO = true;
             }
         }
 
         public void keyPressed(KeyEvent e) {
             if (e.getKeyChar() == 'v' || e.getKeyChar() == 'V') {
-                PADDLE_VERTICAL_MOVEMENT_ONLY = true;
+                Globals.PADDLE_VERTICAL_MOVEMENT_ONLY = true;
             }
             if (e.getKeyChar() == 'h' || e.getKeyChar() == 'H') {
-                PADDLE_HORIZONTAL_MOVEMENT_ONLY = true;
+                Globals.PADDLE_HORIZONTAL_MOVEMENT_ONLY = true;
             }
         }
 
         public void keyReleased(KeyEvent e) {
             if (e.getKeyChar() == 'v' || e.getKeyChar() == 'V') {
-                PADDLE_VERTICAL_MOVEMENT_ONLY = false;
+                Globals.PADDLE_VERTICAL_MOVEMENT_ONLY = false;
             }
             if (e.getKeyChar() == 'h' || e.getKeyChar() == 'H') {
-                PADDLE_HORIZONTAL_MOVEMENT_ONLY = false;
+                Globals.PADDLE_HORIZONTAL_MOVEMENT_ONLY = false;
             }
         }
 
@@ -95,7 +95,7 @@ public class Component extends JComponent {
                 PAUSE_TIME = (PAUSE_TIME < 0) ? 0 : PAUSE_TIME;
             }
             else if (e.getButton() == MouseEvent.BUTTON2) {
-                COLLISION_ON = !COLLISION_ON;
+                Globals.COLLISION_ON = !Globals.COLLISION_ON;
             }
 
         }
@@ -110,9 +110,9 @@ public class Component extends JComponent {
         }
         public void mouseMoved(MouseEvent e) {
 
-            if (PADDLE_VERTICAL_MOVEMENT_ONLY) {
+            if (Globals.PADDLE_VERTICAL_MOVEMENT_ONLY) {
                 paddle.setLocation(paddle.x, e.getY());
-            } else if (PADDLE_HORIZONTAL_MOVEMENT_ONLY) {
+            } else if (Globals.PADDLE_HORIZONTAL_MOVEMENT_ONLY) {
                 paddle.setLocation(e.getX(), paddle.y);
             } else {
                 paddle.setLocation(e.getX(), e.getY());
@@ -121,7 +121,7 @@ public class Component extends JComponent {
             oldPaddle = new Paddle(paddle, paddle.x - paddle.getxVel(), paddle.y - paddle.getyVel());
             unionPaddle = paddle.union(oldPaddle);
 
-            if (COLLISION_ON) {
+            if (Globals.COLLISION_ON) {
                 unionPaddle.checkForBallCollision(ball);
             }
 
@@ -151,8 +151,8 @@ public class Component extends JComponent {
         class MyRunnable implements Runnable {
             public void run() {
                 while (true) {
-                    if (BALL_MOVEMENT_ON) {
-                        if (COLLISION_ON) {
+                    if (Globals.BALL_MOVEMENT_ON) {
+                        if (Globals.COLLISION_ON) {
                             ball.move(unionPaddle);
                         } else {
                             ball.move();
@@ -191,11 +191,11 @@ public class Component extends JComponent {
         g2.setColor(Color.WHITE);
         g2.fill(ball);
 
-        if (DEBUG_TEXT_ON) {
+        if (Globals.DEBUG_TEXT_ON) {
             drawDebugText(g2);
         }
 
-        if (PRINT_PADDLE_INFO) {
+        if (Globals.PRINT_PADDLE_INFO) {
             String s0 = String.valueOf(oldPaddle);
             String s1 = String.valueOf(paddle);
             String s2 = String.valueOf(unionPaddle);
@@ -203,7 +203,7 @@ public class Component extends JComponent {
             System.out.println("paddle:      " + s1);
             System.out.println("unionPaddle: " + s2);
             System.out.println();
-            PRINT_PADDLE_INFO = false;
+            Globals.PRINT_PADDLE_INFO = false;
         }
     }
 
@@ -212,7 +212,7 @@ public class Component extends JComponent {
         g2.setFont(font);
 
         g2.drawString("Pause: " + PAUSE_TIME, 10, 10);
-        g2.drawString("Collision: " + COLLISION_ON, 10, 25);
+        g2.drawString("Collision: " + Globals.COLLISION_ON, 10, 25);
 
         String paddleTop = String.valueOf(paddle.getTopEdge());
         String paddleLeft = String.valueOf(paddle.getLeftEdge());
