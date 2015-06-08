@@ -56,16 +56,16 @@ public class Paddle extends MovingRect {
         boolean ballTopSideHit = contains(ball.getTopLeft()) && contains(ball.getTopRight());
         boolean ballBottomSideHit = contains(ball.getBottomLeft()) && contains(ball.getBottomRight());
 
-        boolean paddleMovingLeft = (getxVel() < 0);
-        boolean paddleMovingRight = (getxVel() > 0);
-        boolean paddleMovingUp = (getyVel() < 0);
-        boolean paddleMovingDown = (getyVel() > 0);
+        boolean paddleMovingLeft = getxVel() < 0;
+        boolean paddleMovingRight = getxVel() > 0;
+        boolean paddleMovingUp = getyVel() < 0;
+        boolean paddleMovingDown = getyVel() > 0;
 
         Axis largerChange = Math.abs(getxVel()) > Math.abs(getyVel()) ? Axis.X : Axis.Y;
 
 
         // Paddle moving LEFT UP
-        if ((ballRightSideHit && paddleMovingLeft) && (ballBottomSideHit && paddleMovingUp)) {
+        if (ballRightSideHit && paddleMovingLeft && ballBottomSideHit && paddleMovingUp) {
             if (largerChange == Axis.X) {
                 ball.setRightEdge(getLeftEdge());
                 collisionInfo = "Ball's RIGHT,BOTTOM sides hit while paddle moving LEFT,UP.  Setting to LEFT.";
@@ -76,7 +76,7 @@ public class Paddle extends MovingRect {
         }
 
         // Paddle moving RIGHT UP
-        else if ((ballLeftSideHit && paddleMovingRight) && (ballBottomSideHit && paddleMovingUp)) {
+        else if (ballLeftSideHit && paddleMovingRight && ballBottomSideHit && paddleMovingUp) {
             if (largerChange == Axis.X) {
                 ball.setLeftEdge(getRightEdge());
                 collisionInfo = "Ball's LEFT,BOTTOM sides hit while paddle moving RIGHT,UP.  Setting to RIGHT.";
@@ -87,7 +87,7 @@ public class Paddle extends MovingRect {
         }
 
         // Paddle moving LEFT DOWN
-        else if ((ballRightSideHit && paddleMovingLeft) && (ballTopSideHit && paddleMovingDown)) {
+        else if (ballRightSideHit && paddleMovingLeft && ballTopSideHit && paddleMovingDown) {
             if (largerChange == Axis.X) {
                 ball.setRightEdge(getLeftEdge());
                 collisionInfo = "Ball's RIGHT,TOP sides hit while paddle moving LEFT,DOWN.  Setting to LEFT.";
@@ -98,7 +98,7 @@ public class Paddle extends MovingRect {
         }
 
         // Paddle moving RIGHT DOWN
-        else if ((ballLeftSideHit && paddleMovingRight) && (ballTopSideHit && paddleMovingDown)) {
+        else if (ballLeftSideHit && paddleMovingRight && ballTopSideHit && paddleMovingDown) {
             if (largerChange == Axis.X) {
                 ball.setLeftEdge(getRightEdge());
                 collisionInfo = "Ball's LEFT,TOP sides hit while paddle moving RIGHT,DOWN.  Setting to RIGHT.";
