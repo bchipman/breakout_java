@@ -11,11 +11,14 @@ public class Globals {
     public static int WINDOW_TOP_EDGE;
     public static int WINDOW_BOTTOM_EDGE;
 
+    public static final boolean PRINT_PADDLE_BALL_COLLISION_INFO = false;
     public static boolean COLLISION_ON = true;
     public static boolean DEBUG_TEXT_ON = true;
     public static boolean BALL_MOVEMENT_ON = true;
     public static boolean PADDLE_VERTICAL_MOVEMENT_ONLY = false;
     public static boolean PADDLE_HORIZONTAL_MOVEMENT_ONLY = false;
     public static boolean PRINT_PADDLE_INFO = false;
+
+    public static int PAUSE_TIME = 15;
 
 }

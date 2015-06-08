@@ -26,16 +26,6 @@ public class Component extends JComponent {
     private static final int BALL_X_VELOCITY = 1;
     private static final int BALL_Y_VELOCITY = -2;
 
-    private static final boolean PRINT_PADDLE_BALL_COLLISION_INFO = false;
-
-    private int PAUSE_TIME = 15;
-    //private boolean COLLISION_ON = true;
-    //private boolean DEBUG_TEXT_ON = true;
-    //private boolean BALL_MOVEMENT_ON = true;
-    //private boolean PADDLE_VERTICAL_MOVEMENT_ONLY = false;
-    //private boolean PADDLE_HORIZONTAL_MOVEMENT_ONLY = false;
-    //private boolean PRINT_PADDLE_INFO = false;
-
 
     class MyKeyListener implements KeyListener {
 
@@ -44,11 +34,11 @@ public class Component extends JComponent {
                 Globals.DEBUG_TEXT_ON = !Globals.DEBUG_TEXT_ON;
             }
             if (e.getKeyChar() == '-') {
-                PAUSE_TIME += 1;
+                Globals.PAUSE_TIME += 1;
             }
             if (e.getKeyChar() == '+' || e.getKeyChar() == '=') {
-                PAUSE_TIME -= 1;
-                PAUSE_TIME = (PAUSE_TIME < 1) ? 1 : PAUSE_TIME;
+                Globals.PAUSE_TIME -= 1;
+                Globals.PAUSE_TIME = (Globals.PAUSE_TIME < 1) ? 1 : Globals.PAUSE_TIME;
             }
             if (e.getKeyChar() == 'c' || e.getKeyChar() == 'C') {
                 Globals.COLLISION_ON = !Globals.COLLISION_ON;
@@ -89,10 +79,10 @@ public class Component extends JComponent {
         }
         public void mouseClicked(MouseEvent e) {
             if (e.getButton() == MouseEvent.BUTTON1) {
-                PAUSE_TIME += 5;
+                Globals.PAUSE_TIME += 5;
             } else if (e.getButton() == MouseEvent.BUTTON3) {
-                PAUSE_TIME -= 5;
-                PAUSE_TIME = (PAUSE_TIME < 0) ? 0 : PAUSE_TIME;
+                Globals.PAUSE_TIME -= 5;
+                Globals.PAUSE_TIME = (Globals.PAUSE_TIME < 0) ? 0 : Globals.PAUSE_TIME;
             }
             else if (e.getButton() == MouseEvent.BUTTON2) {
                 Globals.COLLISION_ON = !Globals.COLLISION_ON;
@@ -125,7 +115,7 @@ public class Component extends JComponent {
                 unionPaddle.checkForBallCollision(ball);
             }
 
-            if (PRINT_PADDLE_BALL_COLLISION_INFO) {
+            if (Globals.PRINT_PADDLE_BALL_COLLISION_INFO) {
                 unionPaddle.printPaddleBallCollisionInfo();
             }
 
@@ -159,7 +149,7 @@ public class Component extends JComponent {
                         }
                     }
                     repaint();
-                    pause(PAUSE_TIME);
+                    pause(Globals.PAUSE_TIME);
                 }
             }
         }
@@ -211,7 +201,7 @@ public class Component extends JComponent {
         Font font = new Font("Consolas", Font.PLAIN, 10);
         g2.setFont(font);
 
-        g2.drawString("Pause: " + PAUSE_TIME, 10, 10);
+        g2.drawString("Pause: " + Globals.PAUSE_TIME, 10, 10);
         g2.drawString("Collision: " + Globals.COLLISION_ON, 10, 25);
 
         String paddleTop = String.valueOf(paddle.getTopEdge());
