@@ -110,8 +110,6 @@ public class Component extends JComponent {
         }
         public void mouseMoved(MouseEvent e) {
 
-            oldPaddle = new Paddle(paddle);
-
             if (PADDLE_VERTICAL_MOVEMENT_ONLY) {
                 paddle.setLocation(paddle.x, e.getY());
             } else if (PADDLE_HORIZONTAL_MOVEMENT_ONLY) {
@@ -120,6 +118,7 @@ public class Component extends JComponent {
                 paddle.setLocation(e.getX(), e.getY());
             }
 
+            oldPaddle = new Paddle(paddle, paddle.x - paddle.getxVel(), paddle.y - paddle.getyVel());
             unionPaddle = paddle.union(oldPaddle);
 
             if (COLLISION_ON) {

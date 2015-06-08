@@ -18,6 +18,10 @@ public class Paddle extends MovingRect {
         super(oldPaddle.x, oldPaddle.y, oldPaddle.width, oldPaddle.height);
     }
 
+    public Paddle(Paddle oldPaddle, int startX, int startY) {
+        super(startX, startY, oldPaddle.width, oldPaddle.height);
+    }
+
     public Paddle(Rectangle oldRect) {
         super(oldRect.x, oldRect.y, oldRect.width, oldRect.height);
     }
