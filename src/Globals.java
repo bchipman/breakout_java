@@ -32,4 +32,8 @@ public class Globals {
     public static final int BALL_X_VELOCITY = 1;
     public static final int BALL_Y_VELOCITY = -2;
 
+    public static String PADDLE_BALL_COLLISION_INFO = null;
+
+
+
 }

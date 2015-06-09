@@ -88,26 +88,10 @@ public class Component extends JComponent {
             repaint();
         }
         public void mouseMoved(MouseEvent e) {
-
-            if (Globals.PADDLE_VERTICAL_MOVEMENT_ONLY) {
-                paddle.setLocation(paddle.x, e.getY());
-            } else if (Globals.PADDLE_HORIZONTAL_MOVEMENT_ONLY) {
-                paddle.setLocation(e.getX(), paddle.y);
-            } else {
-                paddle.setLocation(e.getX(), e.getY());
-            }
-
-            oldPaddle = new Paddle(paddle, paddle.x - paddle.getxVel(), paddle.y - paddle.getyVel());
-            unionPaddle = paddle.union(oldPaddle);
-
-            if (Globals.COLLISION_ON) {
-                unionPaddle.checkForBallCollision(ball);
-            }
-
-            if (Globals.PRINT_PADDLE_BALL_COLLISION_INFO) {
-                unionPaddle.printPaddleBallCollisionInfo();
-            }
-
+            Paddle[] updatedPaddles = Physics.movePaddle(paddle, ball, e.getPoint());
+            oldPaddle = updatedPaddles[0];
+            paddle = updatedPaddles[1];
+            unionPaddle = updatedPaddles[2];
             repaint();
         }
     }
