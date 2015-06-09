@@ -7,33 +7,7 @@ public class Ball extends MovingRect {
         super(xStartPos, yStartPos, width, height, xStartVel, yStartVel);
     }
 
-    public void move() {
-        translate(getxVel(), getyVel());
-        checkForWallCollisions();
-    }
-
-    public void move(Paddle paddle) {
-        translate(getxVel(), getyVel());
-        checkForWallCollisions();
-        checkForPaddleCollision1(paddle);
-    }
-
-    private void checkForWallCollisions() {
-        if (getLeftEdge() <= Globals.WINDOW_LEFT_EDGE) {
-            setxVel(Math.abs(getxVel()));
-        }
-        if (getRightEdge() >= Globals.WINDOW_RIGHT_EDGE) {
-            setxVel(Math.abs(getxVel()) * -1);
-        }
-        if (getTopEdge() <= Globals.WINDOW_TOP_EDGE) {
-            setyVel(Math.abs(getyVel()));
-        }
-        if (getBottomEdge() >= Globals.WINDOW_BOTTOM_EDGE) {
-            setyVel(Math.abs(getyVel()) * -1);
-        }
-    }
-
-    private void checkForPaddleCollision1(Paddle paddle) {
+    public void checkForPaddleCollision1(Paddle paddle) {
         boolean topLeftHit = paddle.contains(getTopLeft());
         boolean topRightHit = paddle.contains(getTopRight());
         boolean bottomLeftHit = paddle.contains(getBottomLeft());

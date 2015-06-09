@@ -120,11 +120,7 @@ public class Component extends JComponent {
             public void run() {
                 while (true) {
                     if (Globals.BALL_MOVEMENT_ON) {
-                        if (Globals.COLLISION_ON) {
-                            ball.move(unionPaddle);
-                        } else {
-                            ball.move();
-                        }
+                        Physics.moveBall(ball, unionPaddle);
                     }
                     repaint();
                     pause(Globals.PAUSE_TIME);
