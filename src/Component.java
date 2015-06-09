@@ -15,17 +15,6 @@ public class Component extends JComponent {
     private Paddle paddle;
     private Ball ball;
 
-    private static final int PADDLE_X_POSITION = 100;
-    private static final int PADDLE_Y_POSITION = 300;
-    private static final int PADDLE_LENGTH = 100;
-    private static final int PADDLE_HEIGHT = 10;
-
-    private static final int BALL_SIZE = 10;
-    private static final int BALL_X_POSITION = PADDLE_X_POSITION + PADDLE_LENGTH / 2 - BALL_SIZE / 2;
-    private static final int BALL_Y_POSITION = PADDLE_Y_POSITION - BALL_SIZE;
-    private static final int BALL_X_VELOCITY = 1;
-    private static final int BALL_Y_VELOCITY = -2;
-
 
     class MyKeyListener implements KeyListener {
 
@@ -131,10 +120,10 @@ public class Component extends JComponent {
         addMouseListener(myMouseInputListener);
         addMouseMotionListener(myMouseInputListener);
 
-        oldPaddle = new Paddle(PADDLE_X_POSITION, PADDLE_Y_POSITION, PADDLE_LENGTH, PADDLE_HEIGHT);
-        unionPaddle = new Paddle(PADDLE_X_POSITION, PADDLE_Y_POSITION, PADDLE_LENGTH, PADDLE_HEIGHT);
-        paddle = new Paddle(PADDLE_X_POSITION, PADDLE_Y_POSITION, PADDLE_LENGTH, PADDLE_HEIGHT);
-        ball = new Ball(BALL_X_POSITION, BALL_Y_POSITION, BALL_SIZE, BALL_SIZE, BALL_X_VELOCITY, BALL_Y_VELOCITY);
+        oldPaddle = new Paddle(Globals.PADDLE_X_POSITION, Globals.PADDLE_Y_POSITION, Globals.PADDLE_LENGTH, Globals.PADDLE_HEIGHT);
+        unionPaddle = new Paddle(Globals.PADDLE_X_POSITION, Globals.PADDLE_Y_POSITION, Globals.PADDLE_LENGTH, Globals.PADDLE_HEIGHT);
+        paddle = new Paddle(Globals.PADDLE_X_POSITION, Globals.PADDLE_Y_POSITION, Globals.PADDLE_LENGTH, Globals.PADDLE_HEIGHT);
+        ball = new Ball(Globals.BALL_X_POSITION, Globals.BALL_Y_POSITION, Globals.BALL_SIZE, Globals.BALL_SIZE, Globals.BALL_X_VELOCITY, Globals.BALL_Y_VELOCITY);
     }
 
     public void animate() {

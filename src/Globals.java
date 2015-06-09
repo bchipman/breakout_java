@@ -21,4 +21,15 @@ public class Globals {
 
     public static int PAUSE_TIME = 15;
 
+    public static final int PADDLE_X_POSITION = 100;
+    public static final int PADDLE_Y_POSITION = 300;
+    public static final int PADDLE_LENGTH = 100;
+    public static final int PADDLE_HEIGHT = 10;
+
+    public static final int BALL_SIZE = 10;
+    public static final int BALL_X_POSITION = PADDLE_X_POSITION + PADDLE_LENGTH / 2 - BALL_SIZE / 2;
+    public static final int BALL_Y_POSITION = PADDLE_Y_POSITION - BALL_SIZE;
+    public static final int BALL_X_VELOCITY = 1;
+    public static final int BALL_Y_VELOCITY = -2;
+
 }
