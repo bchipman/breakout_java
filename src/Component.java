@@ -92,6 +92,11 @@ public class Component extends JComponent {
             oldPaddle = updatedPaddles[0];
             paddle = updatedPaddles[1];
             unionPaddle = updatedPaddles[2];
+
+            if (Globals.PRINT_PADDLE_BALL_COLLISION_INFO) {
+                printPaddleBallCollisionInfo();
+            }
+
             repaint();
         }
     }
@@ -204,6 +209,13 @@ public class Component extends JComponent {
         g2.drawString(ballRight, ballX + 50, ballY + 15);
         g2.drawString(ballBottom, ballX + 25, ballY + 30);
 
+    }
+
+    private void printPaddleBallCollisionInfo() {
+        if (Globals.PADDLE_BALL_COLLISION_INFO != null) {
+            System.out.println(Globals.PADDLE_BALL_COLLISION_INFO);
+        }
+        Globals.PADDLE_BALL_COLLISION_INFO = null;
     }
 
 }

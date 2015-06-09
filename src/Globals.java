@@ -11,7 +11,6 @@ public class Globals {
     public static int WINDOW_TOP_EDGE;
     public static int WINDOW_BOTTOM_EDGE;
 
-    public static final boolean PRINT_PADDLE_BALL_COLLISION_INFO = false;
     public static boolean COLLISION_ON = true;
     public static boolean DEBUG_TEXT_ON = true;
     public static boolean BALL_MOVEMENT_ON = true;
@@ -32,8 +31,7 @@ public class Globals {
     public static final int BALL_X_VELOCITY = 1;
     public static final int BALL_Y_VELOCITY = -2;
 
+    public static final boolean PRINT_PADDLE_BALL_COLLISION_INFO = false;
     public static String PADDLE_BALL_COLLISION_INFO = null;
-
-
 
 }
