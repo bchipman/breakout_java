@@ -19,6 +19,8 @@ public class Physics {
             paddle.setLocation(mousePos.x, mousePos.y);
         }
 
+        checkForPaddleWallCollision(paddle);
+
         Paddle oldPaddle = new Paddle(paddle, paddle.x-paddle.getxVel(), paddle.y-paddle.getyVel());
         Paddle unionPaddle = paddle.union(oldPaddle);
 
@@ -115,6 +117,15 @@ public class Physics {
         }
 
         Globals.PADDLE_BALL_COLLISION_INFO = collisionInfo;
+    }
+
+    private static void checkForPaddleWallCollision(Paddle paddle) {
+        if (paddle.getRightEdge() > Globals.WINDOW_RIGHT_EDGE) {
+            paddle.setRightEdge(Globals.WINDOW_RIGHT_EDGE);
+        }
+        if (paddle.getBottomEdge() > Globals.WINDOW_BOTTOM_EDGE) {
+            paddle.setBottomEdge(Globals.WINDOW_BOTTOM_EDGE);
+        }
     }
 
 }

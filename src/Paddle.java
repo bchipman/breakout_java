@@ -31,16 +31,6 @@ public class Paddle extends MovingRect {
         int oldY = y;
         super.setLocation(newX, newY);
         setVel(x - oldX, y - oldY);
-        checkForWallCollisions();
-    }
-
-    private void checkForWallCollisions() {
-        if (getRightEdge() > Globals.WINDOW_RIGHT_EDGE) {
-            setRightEdge(Globals.WINDOW_RIGHT_EDGE);
-        }
-        if (getBottomEdge() > Globals.WINDOW_BOTTOM_EDGE) {
-            setBottomEdge(Globals.WINDOW_BOTTOM_EDGE);
-        }
     }
 
     public Paddle union(Paddle prevPaddle) {
