@@ -35,11 +35,11 @@ public class Paddle extends MovingRect {
     }
 
     private void checkForWallCollisions() {
-        if (getRightEdge() > Constants.WINDOW_RIGHT_EDGE) {
-            setRightEdge(Constants.WINDOW_RIGHT_EDGE);
+        if (getRightEdge() > Globals.WINDOW_RIGHT_EDGE) {
+            setRightEdge(Globals.WINDOW_RIGHT_EDGE);
         }
-        if (getBottomEdge() > Constants.WINDOW_BOTTOM_EDGE) {
-            setBottomEdge(Constants.WINDOW_BOTTOM_EDGE);
+        if (getBottomEdge() > Globals.WINDOW_BOTTOM_EDGE) {
+            setBottomEdge(Globals.WINDOW_BOTTOM_EDGE);
         }
     }
 

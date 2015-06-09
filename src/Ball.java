@@ -19,16 +19,16 @@ public class Ball extends MovingRect {
     }
 
     private void checkForWallCollisions() {
-        if (getLeftEdge() <= Constants.WINDOW_LEFT_EDGE) {
+        if (getLeftEdge() <= Globals.WINDOW_LEFT_EDGE) {
             setxVel(Math.abs(getxVel()));
         }
-        if (getRightEdge() >= Constants.WINDOW_RIGHT_EDGE) {
+        if (getRightEdge() >= Globals.WINDOW_RIGHT_EDGE) {
             setxVel(Math.abs(getxVel()) * -1);
         }
-        if (getTopEdge() <= Constants.WINDOW_TOP_EDGE) {
+        if (getTopEdge() <= Globals.WINDOW_TOP_EDGE) {
             setyVel(Math.abs(getyVel()));
         }
-        if (getBottomEdge() >= Constants.WINDOW_BOTTOM_EDGE) {
+        if (getBottomEdge() >= Globals.WINDOW_BOTTOM_EDGE) {
             setyVel(Math.abs(getyVel()) * -1);
         }
     }
