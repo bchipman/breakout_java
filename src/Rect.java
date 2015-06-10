@@ -9,19 +9,11 @@ public class Rect extends Rectangle {
     private int rightEdge;
     private int topEdge;
     private int bottomEdge;
-    private MyPoint topLeft;
-    private MyPoint topRight;
-    private MyPoint bottomLeft;
-    private MyPoint bottomRight;
+    private Point topLeft;
+    private Point topRight;
+    private Point bottomLeft;
+    private Point bottomRight;
 
-    protected class MyPoint extends Point {
-        public MyPoint(int newX, int newY) {
-            super(newX, newY);
-        }
-        public String toString() {
-            return String.format("(%d,%d)", x, y);
-        }
-    }
 
     public Rect(int xStartPos, int yStartPos, int width, int height) {
         super(xStartPos, yStartPos, width, height);
@@ -65,10 +57,10 @@ public class Rect extends Rectangle {
     }
 
     private void updatePoints() {
-        topLeft = new MyPoint(leftEdge, topEdge);
-        topRight = new MyPoint(rightEdge, topEdge);
-        bottomLeft = new MyPoint(leftEdge, bottomEdge);
-        bottomRight = new MyPoint(rightEdge, bottomEdge);
+        topLeft = new Point(leftEdge, topEdge);
+        topRight = new Point(rightEdge, topEdge);
+        bottomLeft = new Point(leftEdge, bottomEdge);
+        bottomRight = new Point(rightEdge, bottomEdge);
     }
 
     public int getLeftEdge() {
@@ -84,16 +76,16 @@ public class Rect extends Rectangle {
         return bottomEdge;
     }
 
-    public MyPoint getTopLeft() {
+    public Point getTopLeft() {
         return topLeft;
     }
-    public MyPoint getTopRight() {
+    public Point getTopRight() {
         return topRight;
     }
-    public MyPoint getBottomLeft() {
+    public Point getBottomLeft() {
         return bottomLeft;
     }
-    public MyPoint getBottomRight() {
+    public Point getBottomRight() {
         return bottomRight;
     }
 
@@ -114,22 +106,22 @@ public class Rect extends Rectangle {
         update();
     }
 
-    public void setTopLeft(MyPoint newTopLeft) {
+    public void setTopLeft(Point newTopLeft) {
         setLeftEdge(newTopLeft.x);
         setTopEdge(newTopLeft.y);
         update();
     }
-    public void setTopRight(MyPoint newTopRight) {
+    public void setTopRight(Point newTopRight) {
         setRightEdge(newTopRight.x);
         setTopEdge(newTopRight.y);
         update();
     }
-    public void setBottomLeft(MyPoint newBottomLeft) {
+    public void setBottomLeft(Point newBottomLeft) {
         setLeftEdge(newBottomLeft.x);
         setBottomEdge(newBottomLeft.y);
         update();
     }
-    public void setBottomRight(MyPoint newBottomRight) {
+    public void setBottomRight(Point newBottomRight) {
         setRightEdge(newBottomRight.x);
         setBottomEdge(newBottomRight.y);
         update();

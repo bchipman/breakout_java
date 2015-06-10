@@ -1,3 +1,5 @@
+import java.awt.*;
+
 /**
  Created by Brian on 6/2/2015.
  */
@@ -35,7 +37,7 @@ public class MovingRect extends Rect {
         setxVel(xVel);
         setyVel(yVel);
     }
-    public void setVel(MyPoint vel) {
+    public void setVel(Point vel) {
         setxVel(vel.x);
         setyVel(vel.y);
     }
