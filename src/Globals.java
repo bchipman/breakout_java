@@ -24,7 +24,7 @@ public class Globals {
     public static int PAUSE_TIME = 15;
 
     public static final int PADDLE_X_POSITION = 100;
-    public static final int PADDLE_Y_POSITION = 300;
+    public static final int PADDLE_Y_POSITION = 415;
     public static final int PADDLE_LENGTH = 100;
     public static final int PADDLE_HEIGHT = 10;
 
