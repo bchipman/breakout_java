@@ -10,7 +10,7 @@ public class Physics {
         X, Y
     }
 
-
+    // -------------------------------------------------------------------------
 
     public static Paddle[] movePaddle(Paddle paddle, Ball ball, Point mousePos) {
         if (Globals.PADDLE_HORIZONTAL_MOVEMENT_ONLY) {
@@ -32,6 +32,15 @@ public class Physics {
 
         return new Paddle[]{oldPaddle, paddle, unionPaddle};
 
+    }
+
+    private static void checkForPaddleWallCollision(Paddle paddle) {
+        if (paddle.getRightEdge() > Globals.WINDOW_RIGHT_EDGE) {
+            paddle.setRightEdge(Globals.WINDOW_RIGHT_EDGE);
+        }
+        if (paddle.getBottomEdge() > Globals.WINDOW_BOTTOM_EDGE) {
+            paddle.setBottomEdge(Globals.WINDOW_BOTTOM_EDGE);
+        }
     }
 
     private static void checkForPaddleBallCollision(Paddle paddle, Ball ball) {
@@ -121,16 +130,7 @@ public class Physics {
         Globals.PADDLE_BALL_COLLISION_INFO = collisionInfo;
     }
 
-    private static void checkForPaddleWallCollision(Paddle paddle) {
-        if (paddle.getRightEdge() > Globals.WINDOW_RIGHT_EDGE) {
-            paddle.setRightEdge(Globals.WINDOW_RIGHT_EDGE);
-        }
-        if (paddle.getBottomEdge() > Globals.WINDOW_BOTTOM_EDGE) {
-            paddle.setBottomEdge(Globals.WINDOW_BOTTOM_EDGE);
-        }
-    }
-
-
+    // -------------------------------------------------------------------------
 
     public static void moveBall(Ball ball, Paddle paddle, Blocks blocks) {
         ball.translate(ball.getxVel(), ball.getyVel());
