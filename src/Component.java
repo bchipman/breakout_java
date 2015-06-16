@@ -17,7 +17,7 @@ public class Component extends JComponent {
     private Blocks blocks;
 
 
-    class MyKeyListener implements KeyListener {
+    private class MyKeyListener implements KeyListener {
 
         public void keyTyped(KeyEvent e) {
             if (e.getKeyChar() == '`') {
@@ -26,42 +26,42 @@ public class Component extends JComponent {
             if (e.getKeyChar() == '-') {
                 Globals.PAUSE_TIME += 1;
             }
-            if (e.getKeyChar() == '+' || e.getKeyChar() == '=') {
+            if (e.getKeyChar() == '+') {
                 Globals.PAUSE_TIME -= 1;
                 Globals.PAUSE_TIME = (Globals.PAUSE_TIME < 1) ? 1 : Globals.PAUSE_TIME;
             }
-            if (e.getKeyChar() == 'c' || e.getKeyChar() == 'C') {
+            if (e.getKeyChar() == 'c') {
                 Globals.COLLISION_ON = !Globals.COLLISION_ON;
             }
-            if (e.getKeyChar() == 'm' || e.getKeyChar() == 'M') {
+            if (e.getKeyChar() == 'm') {
                 Globals.BALL_MOVEMENT_ON = !Globals.BALL_MOVEMENT_ON;
             }
-            if (e.getKeyChar() == 'p' || e.getKeyChar() == 'P') {
+            if (e.getKeyChar() == 'p') {
                 Globals.PRINT_PADDLE_INFO = true;
             }
         }
 
         public void keyPressed(KeyEvent e) {
-            if (e.getKeyChar() == 'v' || e.getKeyChar() == 'V') {
+            if (e.getKeyChar() == 'v') {
                 Globals.PADDLE_VERTICAL_MOVEMENT_ONLY = true;
             }
-            if (e.getKeyChar() == 'h' || e.getKeyChar() == 'H') {
+            if (e.getKeyChar() == 'h') {
                 Globals.PADDLE_HORIZONTAL_MOVEMENT_ONLY = true;
             }
         }
 
         public void keyReleased(KeyEvent e) {
-            if (e.getKeyChar() == 'v' || e.getKeyChar() == 'V') {
+            if (e.getKeyChar() == 'v') {
                 Globals.PADDLE_VERTICAL_MOVEMENT_ONLY = false;
             }
-            if (e.getKeyChar() == 'h' || e.getKeyChar() == 'H') {
+            if (e.getKeyChar() == 'h') {
                 Globals.PADDLE_HORIZONTAL_MOVEMENT_ONLY = false;
             }
         }
 
     }
 
-    class MyMouseInputListener implements MouseInputListener {
+    private class MyMouseInputListener implements MouseInputListener {
         public void mousePressed(MouseEvent e) {
         }
         public void mouseReleased(MouseEvent e) {
