@@ -21,20 +21,20 @@ public class Physics {
             paddle.setLocation(mousePos.x, mousePos.y);
         }
 
-        checkForPaddleWallCollision(paddle);
+        handleCollision(paddle);
 
         Paddle oldPaddle = new Paddle(paddle, paddle.x-paddle.getxVel(), paddle.y-paddle.getyVel());
         Paddle unionPaddle = paddle.union(oldPaddle);
 
         if (Globals.COLLISION_ON) {
-            checkForPaddleBallCollision(unionPaddle, ball);
+            handleCollision(unionPaddle, ball);
         }
 
         return new Paddle[]{oldPaddle, paddle, unionPaddle};
 
     }
 
-    private static void checkForPaddleWallCollision(Paddle paddle) {
+    private static void handleCollision(Paddle paddle) {
         if (paddle.getRightEdge() > Globals.WINDOW_RIGHT_EDGE) {
             paddle.setRightEdge(Globals.WINDOW_RIGHT_EDGE);
         }
@@ -43,7 +43,7 @@ public class Physics {
         }
     }
 
-    private static void checkForPaddleBallCollision(Paddle paddle, Ball ball) {
+    private static void handleCollision(Paddle paddle, Ball ball) {
 
         boolean ballLeftSideHit = paddle.contains(ball.getTopLeft()) && paddle.contains(ball.getBottomLeft());
         boolean ballRightSideHit = paddle.contains(ball.getTopRight()) && paddle.contains(ball.getBottomRight());
@@ -134,14 +134,14 @@ public class Physics {
 
     public static void moveBall(Ball ball, Paddle paddle, Blocks blocks) {
         ball.translate(ball.getxVel(), ball.getyVel());
-        checkForBallWallCollision(ball);
+        handleCollision(ball);
         if (Globals.COLLISION_ON) {
-            checkForBallPaddleCollision(ball, paddle);
+            handleCollision(ball, paddle);
         }
-        checkForBallBlockCollision(ball, blocks);
+        handleCollision(ball, blocks);
     }
 
-    private static void checkForBallWallCollision(Ball ball) {
+    private static void handleCollision(Ball ball) {
         if (ball.getLeftEdge() <= Globals.WINDOW_LEFT_EDGE) {
             ball.setxVel(Math.abs(ball.getxVel()));
         }
@@ -156,7 +156,7 @@ public class Physics {
         }
     }
 
-    private static void checkForBallPaddleCollision(Ball ball, Paddle paddle) {
+    private static void handleCollision(Ball ball, Paddle paddle) {
         boolean topLeftHit = paddle.contains(ball.getTopLeft());
         boolean topRightHit = paddle.contains(ball.getTopRight());
         boolean bottomLeftHit = paddle.contains(ball.getBottomLeft());
@@ -184,7 +184,7 @@ public class Physics {
 
     }
 
-    private static void checkForBallBlockCollision(Ball ball, Blocks blocks) {
+    private static void handleCollision(Ball ball, Blocks blocks) {
 
         Blocks blocksCopy = new Blocks(blocks);
 
