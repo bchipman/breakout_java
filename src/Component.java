@@ -14,6 +14,7 @@ public class Component extends JComponent {
     private Paddle unionPaddle;
     private Paddle paddle;
     private Ball ball;
+    private Blocks blocks;
 
 
     class MyKeyListener implements KeyListener {
@@ -113,6 +114,7 @@ public class Component extends JComponent {
         unionPaddle = new Paddle(Globals.PADDLE_X_POSITION, Globals.PADDLE_Y_POSITION, Globals.PADDLE_LENGTH, Globals.PADDLE_HEIGHT);
         paddle = new Paddle(Globals.PADDLE_X_POSITION, Globals.PADDLE_Y_POSITION, Globals.PADDLE_LENGTH, Globals.PADDLE_HEIGHT);
         ball = new Ball(Globals.BALL_X_POSITION, Globals.BALL_Y_POSITION, Globals.BALL_SIZE, Globals.BALL_SIZE, Globals.BALL_X_VELOCITY, Globals.BALL_Y_VELOCITY);
+        blocks = new Blocks();
     }
 
     public void animate() {
@@ -120,7 +122,7 @@ public class Component extends JComponent {
             public void run() {
                 while (true) {
                     if (Globals.BALL_MOVEMENT_ON) {
-                        Physics.moveBall(ball, unionPaddle);
+                        Physics.moveBall(ball, unionPaddle, blocks);
                     }
                     repaint();
                     pause(Globals.PAUSE_TIME);
@@ -151,6 +153,13 @@ public class Component extends JComponent {
         g2.fill(paddle);
         g2.setColor(Color.BLUE);
         g2.draw(paddle);
+
+        for (Block block : blocks.getBlocks()) {
+            g2.setColor(Color.ORANGE);
+            g2.fill(block);
+            g2.setColor(Color.BLACK);
+            g2.draw(block);
+        }
 
         g2.setColor(Color.WHITE);
         g2.fill(ball);

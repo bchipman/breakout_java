@@ -132,12 +132,13 @@ public class Physics {
 
 
 
-    public static void moveBall(Ball ball, Paddle paddle) {
+    public static void moveBall(Ball ball, Paddle paddle, Blocks blocks) {
         ball.translate(ball.getxVel(), ball.getyVel());
         checkForBallWallCollision(ball);
         if (Globals.COLLISION_ON) {
             checkForBallPaddleCollision(ball, paddle);
         }
+        checkForBallBlockCollision(ball, blocks);
     }
 
     private static void checkForBallWallCollision(Ball ball) {
@@ -182,5 +183,46 @@ public class Physics {
         }
 
     }
+
+    private static void checkForBallBlockCollision(Ball ball, Blocks blocks) {
+
+        Blocks blocksCopy = new Blocks(blocks);
+
+        for (Block block : blocksCopy.getBlocks()) {
+            boolean topLeftHit = block.contains(ball.getTopLeft());
+            boolean topRightHit = block.contains(ball.getTopRight());
+            boolean bottomLeftHit = block.contains(ball.getBottomLeft());
+            boolean bottomRightHit = block.contains(ball.getBottomRight());
+
+            // Ball's LEFT hit
+            if (topLeftHit && bottomLeftHit) {
+                ball.setxVel(Math.abs(ball.getxVel()));
+            }
+
+            // Ball's RIGHT hit
+            else if (topRightHit && bottomRightHit) {
+                ball.setxVel(Math.abs(ball.getxVel()) * -1);
+            }
+
+            // Ball's BOTTOM hit
+            else if (bottomLeftHit || bottomRightHit) {
+                ball.setyVel(Math.abs(ball.getyVel()) * -1);
+            }
+
+            // Ball's TOP hit
+            else if (topLeftHit || topRightHit) {
+                ball.setyVel(Math.abs(ball.getyVel()));
+            }
+
+            if (topLeftHit || topRightHit || bottomLeftHit || bottomRightHit) {
+                blocks.removeBlock(block);
+            }
+
+        }
+
+
+
+    }
+
 
 }
