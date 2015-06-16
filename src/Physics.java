@@ -215,12 +215,11 @@ public class Physics {
             }
 
             if (topLeftHit || topRightHit || bottomLeftHit || bottomRightHit) {
-                blocks.removeBlock(block);
+                block.takeHit();
             }
 
         }
-
-
+        blocks.removeDestroyedBlocks();
 
     }
 

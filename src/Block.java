@@ -3,29 +3,24 @@ import java.awt.*;
 public class Block extends Rect {
 
     private Color color;
-    private boolean alive;
+    private int hitPoints;
 
-    public Block(int xStartPos, int yStartPos, int width, int height) {
-        super(xStartPos, yStartPos, width, height);
-        alive = true;
-    }
-
-    public Block(int xStartPos, int yStartPos, int width, int height, Color color) {
+    public Block(int xStartPos, int yStartPos, int width, int height, Color color, int hitPoints) {
         super(xStartPos, yStartPos, width, height);
         this.color = color;
-        alive = true;
+        this.hitPoints = hitPoints;
     }
 
-    public void death() {
-        alive = false;
-    }
-
-    public boolean isAlive() {
-        return alive;
+    public boolean destroyed() {
+        return (hitPoints <= 0);
     }
 
     public Color getColor() {
         return color;
+    }
+
+    public void takeHit() {
+        --hitPoints;
     }
 
 }
