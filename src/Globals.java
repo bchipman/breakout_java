@@ -1,3 +1,6 @@
+import java.awt.*;
+import java.util.Random;
+
 /**
  Created by Brian on 5/28/2015.
  */
@@ -33,5 +36,13 @@ public class Globals {
 
     public static final boolean PRINT_PADDLE_BALL_COLLISION_INFO = false;
     public static String PADDLE_BALL_COLLISION_INFO = null;
+
+    public static final Color blockColors[] = {Color.ORANGE, Color.BLUE, Color.MAGENTA.darker(), Color.GREEN.darker()};
+
+    public static Color randomBlockColor() {
+        Random rand = new Random();
+        int randIndex = rand.nextInt(blockColors.length);
+        return blockColors[randIndex];
+    }
 
 }

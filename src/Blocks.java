@@ -15,7 +15,7 @@ public class Blocks {
 
         for (int j=0; j<50; j+=10) { // y
             for (int i=0; i<Globals.WINDOW_RIGHT_EDGE; i+=50) { // x
-                blocks.add(new Block(i, j, 50, 10));
+                blocks.add(new Block(i, j, 50, 10, Globals.randomBlockColor()));
             }
         }
     }
