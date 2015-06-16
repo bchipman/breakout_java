@@ -5,17 +5,8 @@ import java.awt.*;
  */
 public class Paddle extends MovingRect {
 
-    private enum Axis {
-        X, Y
-    }
-    private String collisionInfo;
-
     public Paddle(int startX, int startY, int width, int height) {
         super(startX, startY, width, height);
-    }
-
-    public Paddle(Paddle oldPaddle) {
-        super(oldPaddle.x, oldPaddle.y, oldPaddle.width, oldPaddle.height);
     }
 
     public Paddle(Paddle oldPaddle, int startX, int startY) {
