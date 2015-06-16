@@ -63,7 +63,6 @@ public class Component extends JComponent {
 
     class MyMouseInputListener implements MouseInputListener {
         public void mousePressed(MouseEvent e) {
-            repaint();
         }
         public void mouseReleased(MouseEvent e) {
         }
@@ -80,13 +79,10 @@ public class Component extends JComponent {
 
         }
         public void mouseEntered(MouseEvent e) {
-            repaint();
         }
         public void mouseExited(MouseEvent e) {
-            repaint();
         }
         public void mouseDragged(MouseEvent e) {
-            repaint();
         }
         public void mouseMoved(MouseEvent e) {
             Paddle[] updatedPaddles = Physics.movePaddle(paddle, ball, e.getPoint());
