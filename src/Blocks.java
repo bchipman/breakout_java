@@ -10,7 +10,7 @@ import java.util.List;
 public class Blocks {
 
     private List<Block> blocks;
-    public Map<Color, Integer> colorHitPointsMap;
+    private Map<Color, Integer> colorHitPointsMap;
 
     public Blocks() {
         colorHitPointsMap = new HashMap<>();

@@ -150,7 +150,8 @@ public class Component extends JComponent {
         g2.setColor(Color.BLUE);
         g2.draw(paddle);
 
-        for (Block block : blocks.getBlocks()) {
+        Blocks blocksCopy = new Blocks(blocks);
+        for (Block block : blocksCopy.getBlocks()) {
             g2.setColor(block.getColor());
             g2.fill(block);
             g2.setColor(Color.BLACK);
