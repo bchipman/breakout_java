@@ -160,6 +160,11 @@ public class Component extends JComponent {
 
         g2.setColor(Color.WHITE);
         g2.fill(ball);
+        g2.setColor(Color.RED);
+        if (Globals.BALL_PADDLE_COLLISION_NUM_FRAMES_DISPLAY > 0) {
+            g2.fill(new Rectangle(Globals.BALL_PADDLE_COLLISION_X, Globals.BALL_PADDLE_COLLISION_Y, 2, 2));
+            --Globals.BALL_PADDLE_COLLISION_NUM_FRAMES_DISPLAY;
+        }
 
         if (Globals.DEBUG_TEXT_ON) {
             drawDebugText(g2);

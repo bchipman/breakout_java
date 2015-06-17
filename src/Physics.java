@@ -174,6 +174,36 @@ public class Physics {
 
         // Ball's BOTTOM hit
         else if (bottomLeftHit || bottomRightHit) {
+            int xSize, xHit;
+
+
+            // Ball's left side hanging over edge
+            // []
+            //  ------------
+            if (ball.getLeftEdge() < paddle.getLeftEdge()) {
+                xSize = ball.getRightEdge() - paddle.getLeftEdge();
+                xHit = (xSize / 2) + paddle.getLeftEdge();
+
+            }
+
+            // Ball's right side hanging over edge
+            //             []
+            //  ------------
+            else if (ball.getRightEdge() > paddle.getRightEdge()) {
+                xSize = paddle.getRightEdge() - ball.getLeftEdge();
+                xHit = (xSize / 2) + ball.getLeftEdge();
+
+            }
+
+            // Ball completely within paddle's x
+            else {
+                xSize = ball.getRightEdge() - ball.getLeftEdge();
+                xHit = (xSize / 2) + ball.getLeftEdge();
+            }
+
+            Globals.BALL_PADDLE_COLLISION_X = xHit;
+            Globals.BALL_PADDLE_COLLISION_Y = ball.getBottomEdge();
+            Globals.BALL_PADDLE_COLLISION_NUM_FRAMES_DISPLAY = 50;
             ball.setyVel(Math.abs(ball.getyVel()) * -1);
         }
 
