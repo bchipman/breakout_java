@@ -178,7 +178,6 @@ public class Physics {
             if (ball.getLeftEdge() < paddle.getLeftEdge()) {
                 xSize = ball.getRightEdge() - paddle.getLeftEdge();
                 xHit = (xSize / 2) + paddle.getLeftEdge();
-
             }
 
             // Ball's right side hanging over edge
@@ -187,7 +186,6 @@ public class Physics {
             else if (ball.getRightEdge() > paddle.getRightEdge()) {
                 xSize = paddle.getRightEdge() - ball.getLeftEdge();
                 xHit = (xSize / 2) + ball.getLeftEdge();
-
             }
 
             // Ball completely within paddle's x
@@ -199,6 +197,30 @@ public class Physics {
             Globals.BALL_PADDLE_COLLISION_X = xHit;
             Globals.BALL_PADDLE_COLLISION_Y = ball.getBottomEdge();
             Globals.BALL_PADDLE_COLLISION_NUM_FRAMES_DISPLAY = 50;
+
+            // Determine ball's new velocity depending on where ball hit on paddle
+            double howFarInRel = (double) (xHit - paddle.getLeftEdge()) / paddle.getWidth();
+            System.out.printf("howFarInRel: %.2f\n", howFarInRel);
+
+            if (howFarInRel < 0.10) {
+                ball.setxVel(2);
+                ball.setxDir(Globals.Dir.LEFT);
+            }
+            else if (howFarInRel >= 0.10 && howFarInRel < 0.45) {
+                ball.setxVel(1);
+                ball.setxDir(Globals.Dir.LEFT);
+            }
+            else if (howFarInRel >= 0.45 && howFarInRel < 0.55) {
+                ball.setxVel(0);
+            }
+            else if (howFarInRel >= 0.55 && howFarInRel < 0.90) {
+                ball.setxVel(1);
+                ball.setxDir(Globals.Dir.RIGHT);
+            }
+            else if (howFarInRel >= 0.90) {
+                ball.setxVel(2);
+                ball.setxDir(Globals.Dir.RIGHT);
+            }
             ball.setyVel(Math.abs(ball.getyVel()) * -1);
         }
 
