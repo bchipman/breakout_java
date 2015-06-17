@@ -159,12 +159,12 @@ public class Physics {
 
         // Ball's LEFT hit
         if (topLeftHit && bottomLeftHit) {
-            ball.setxVel(Math.abs(ball.getxVel()));
+            ball.setxDir(Globals.Dir.RIGHT);
         }
 
         // Ball's RIGHT hit
         else if (topRightHit && bottomRightHit) {
-            ball.setxVel(Math.abs(ball.getxVel()) * -1);
+            ball.setxDir(Globals.Dir.LEFT);
         }
 
         // Ball's BOTTOM hit
@@ -221,12 +221,12 @@ public class Physics {
                 ball.setxVel(2);
                 ball.setxDir(Globals.Dir.RIGHT);
             }
-            ball.setyVel(Math.abs(ball.getyVel()) * -1);
+            ball.setyDir(Globals.Dir.UP);
         }
 
         // Ball's TOP hit
         else if (topLeftHit || topRightHit) {
-            ball.setyVel(Math.abs(ball.getyVel()));
+            ball.setyDir(Globals.Dir.DOWN);
         }
 
     }
@@ -243,22 +243,22 @@ public class Physics {
 
             // Ball's LEFT hit
             if (topLeftHit && bottomLeftHit) {
-                ball.setxVel(Math.abs(ball.getxVel()));
+                ball.setxDir(Globals.Dir.RIGHT);
             }
 
             // Ball's RIGHT hit
             else if (topRightHit && bottomRightHit) {
-                ball.setxVel(Math.abs(ball.getxVel()) * -1);
+                ball.setxDir(Globals.Dir.LEFT);
             }
 
             // Ball's BOTTOM hit
             else if (bottomLeftHit || bottomRightHit) {
-                ball.setyVel(Math.abs(ball.getyVel()) * -1);
+                ball.setyDir(Globals.Dir.UP);
             }
 
             // Ball's TOP hit
             else if (topLeftHit || topRightHit) {
-                ball.setyVel(Math.abs(ball.getyVel()));
+                ball.setyDir(Globals.Dir.DOWN);
             }
 
             if (topLeftHit || topRightHit || bottomLeftHit || bottomRightHit) {
