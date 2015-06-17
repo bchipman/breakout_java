@@ -18,7 +18,6 @@ public class Component extends JComponent {
 
 
     private class MyKeyListener implements KeyListener {
-
         public void keyTyped(KeyEvent e) {
             if (e.getKeyChar() == '`') {
                 Globals.DEBUG_TEXT_ON = !Globals.DEBUG_TEXT_ON;
@@ -40,7 +39,6 @@ public class Component extends JComponent {
                 Globals.PRINT_PADDLE_INFO = true;
             }
         }
-
         public void keyPressed(KeyEvent e) {
             if (e.getKeyChar() == 'v') {
                 Globals.PADDLE_VERTICAL_MOVEMENT_ONLY = true;
@@ -49,7 +47,6 @@ public class Component extends JComponent {
                 Globals.PADDLE_HORIZONTAL_MOVEMENT_ONLY = true;
             }
         }
-
         public void keyReleased(KeyEvent e) {
             if (e.getKeyChar() == 'v') {
                 Globals.PADDLE_VERTICAL_MOVEMENT_ONLY = false;
@@ -58,7 +55,6 @@ public class Component extends JComponent {
                 Globals.PADDLE_HORIZONTAL_MOVEMENT_ONLY = false;
             }
         }
-
     }
 
     private class MyMouseInputListener implements MouseInputListener {
