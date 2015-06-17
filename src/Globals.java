@@ -55,4 +55,8 @@ public class Globals {
         return blockColors[randIndex];
     }
 
+    public enum Dir {
+        LEFT, RIGHT, UP, DOWN
+    }
+
 }
