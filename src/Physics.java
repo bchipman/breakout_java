@@ -138,16 +138,16 @@ public class Physics {
 
     private static void handleCollision(Ball ball) {
         if (ball.getLeftEdge() <= Globals.WINDOW_LEFT_EDGE) {
-            ball.setxVel(Math.abs(ball.getxVel()));
+            ball.setxDir(Globals.Dir.RIGHT);
         }
         if (ball.getRightEdge() >= Globals.WINDOW_RIGHT_EDGE) {
-            ball.setxVel(Math.abs(ball.getxVel()) * -1);
+            ball.setxDir(Globals.Dir.LEFT);
         }
         if (ball.getTopEdge() <= Globals.WINDOW_TOP_EDGE) {
-            ball.setyVel(Math.abs(ball.getyVel()));
+            ball.setyDir(Globals.Dir.DOWN);
         }
         if (ball.getBottomEdge() >= Globals.WINDOW_BOTTOM_EDGE) {
-            ball.setyVel(Math.abs(ball.getyVel()) * -1);
+            ball.setyDir(Globals.Dir.UP);
         }
     }
 

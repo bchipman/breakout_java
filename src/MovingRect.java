@@ -58,9 +58,19 @@ public class MovingRect extends Rect {
     }
     public void setxVel(int xVel) {
         this.xVel = xVel;
+        if (xVel > 0) {
+            xDir = Globals.Dir.RIGHT;
+        } else {
+            xDir = Globals.Dir.LEFT;
+        }
     }
     public void setyVel(int yVel) {
         this.yVel = yVel;
+        if (yVel > 0) {
+            yDir = Globals.Dir.DOWN;
+        } else {
+            yDir = Globals.Dir.UP;
+        }
     }
     public void setVel(int xVel, int yVel) {
         setxVel(xVel);
@@ -79,7 +89,7 @@ public class MovingRect extends Rect {
     }
     public void setxDir(Globals.Dir xDir) {
         this.xDir = xDir;
-        if (xDir == Globals.Dir.LEFT) {
+        if (xDir == Globals.Dir.RIGHT) {
             xVel = Math.abs(xVel);
         } else {
             xVel = Math.abs(xVel) * -1;
@@ -87,7 +97,7 @@ public class MovingRect extends Rect {
     }
     public void setyDir(Globals.Dir yDir) {
         this.yDir = yDir;
-        if (xDir == Globals.Dir.UP) {
+        if (yDir == Globals.Dir.DOWN) {
             yVel = Math.abs(yVel);
         } else {
             yVel = Math.abs(yVel) * -1;
