@@ -25,8 +25,8 @@ public class Globals {
 
     public static final int PADDLE_X_POSITION = 100;
     public static final int PADDLE_Y_POSITION = 415;
-    public static final int PADDLE_LENGTH = 100;
-    public static final int PADDLE_HEIGHT = 10;
+    public static final int PADDLE_LENGTH = 120;
+    public static final int PADDLE_HEIGHT = 15;
 
     public static final int BALL_SIZE = 10;
     public static final int BALL_X_POSITION = PADDLE_X_POSITION + PADDLE_LENGTH / 2 - BALL_SIZE / 2;
@@ -58,5 +58,8 @@ public class Globals {
     public enum Dir {
         LEFT, RIGHT, UP, DOWN
     }
+
+    public static final int BLOCK_WIDTH = 69;
+    public static final int BLOCK_HEIGHT = 15;
 
 }

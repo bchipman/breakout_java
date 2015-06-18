@@ -20,10 +20,11 @@ public class Blocks {
         colorHitPointsMap.put(Globals.BLOCK_COLOR_4, 4);
 
         blocks = new ArrayList<>();
-        for (int j=0; j<250; j+=10) { // y
-            for (int i=0; i<Globals.WINDOW_RIGHT_EDGE; i+=50) { // x
+
+        for (int j=0; j<Globals.WINDOW_HEIGHT/2; j+=Globals.BLOCK_HEIGHT) { // y
+            for (int i=0; i<Globals.WINDOW_WIDTH; i+=Globals.BLOCK_WIDTH) { // x
                 Color randColor = Globals.randomBlockColor();
-                blocks.add(new Block(i, j, 50, 10, randColor, colorHitPointsMap.get(randColor)));
+                blocks.add(new Block(i, j, Globals.BLOCK_WIDTH, Globals.BLOCK_HEIGHT, randColor, colorHitPointsMap.get(randColor)));
             }
         }
 
