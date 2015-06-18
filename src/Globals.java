@@ -42,9 +42,9 @@ public class Globals {
     public static final boolean PRINT_PADDLE_BALL_COLLISION_INFO = false;
     public static String PADDLE_BALL_COLLISION_INFO = null;
 
-    public static Color BLOCK_COLOR_0 = Color.DARK_GRAY.darker();
+    public static Color BLOCK_COLOR_0 = Color.LIGHT_GRAY;
     public static Color BLOCK_COLOR_1 = Color.GREEN.darker();
-    public static Color BLOCK_COLOR_2 = Color.BLUE;
+    public static Color BLOCK_COLOR_2 = new Color(0, 96, 255);
     public static Color BLOCK_COLOR_3 = Color.ORANGE;
     public static Color BLOCK_COLOR_4 = Color.MAGENTA.darker();
 

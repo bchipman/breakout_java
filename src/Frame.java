@@ -10,7 +10,7 @@ public class Frame extends JFrame {
         super(title);
         setSize(Globals.SET_WINDOW_WIDTH, Globals.SET_WINDOW_HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setBackground(Color.DARK_GRAY);
+        getContentPane().setBackground(Color.DARK_GRAY.darker());
         setVisible(true);
         setResizable(false);
         setConstants();
