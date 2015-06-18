@@ -6,8 +6,8 @@ import java.awt.*;
 
 public class MovingRect extends Rect {
 
-    private int xVel;
-    private int yVel;
+    private double xVel;
+    private double yVel;
     private Globals.Dir xDir;
     private Globals.Dir yDir;
 
@@ -49,17 +49,17 @@ public class MovingRect extends Rect {
         return movingRight() && movingDown();
     }
 
-    public int getxSpeed() {
+    public double getxSpeed() {
         return Math.abs(xVel);
     }
-    public int getySpeed() {
+    public double getySpeed() {
         return Math.abs(yVel);
     }
 
-    public int getxVel() {
+    public double getxVel() {
         return xVel;
     }
-    public int getyVel() {
+    public double getyVel() {
         return yVel;
     }
     public void setxVel(int xVel) {

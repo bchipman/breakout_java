@@ -23,7 +23,7 @@ public class Physics {
 
         handleCollision(paddle);
 
-        Paddle oldPaddle = new Paddle(paddle, paddle.x-paddle.getxVel(), paddle.y-paddle.getyVel());
+        Paddle oldPaddle = new Paddle(paddle, (int) (paddle.x-paddle.getxVel()), (int) (paddle.y-paddle.getyVel()));
         Paddle unionPaddle = paddle.union(oldPaddle);
 
         if (Globals.COLLISION_ON) {
@@ -128,7 +128,7 @@ public class Physics {
     // -------------------------------------------------------------------------
 
     public static void moveBall(Ball ball, Paddle paddle, Blocks blocks) {
-        ball.translate(ball.getxVel(), ball.getyVel());
+        ball.translate((int) ball.getxVel(), (int) ball.getyVel());
         handleCollision(ball);
         if (Globals.COLLISION_ON) {
             handleCollision(ball, paddle);
