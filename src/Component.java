@@ -77,6 +77,10 @@ public class Component extends JComponent {
         public void mouseEntered(MouseEvent e) {
         }
         public void mouseExited(MouseEvent e) {
+            Paddle[] updatedPaddles = Physics.movePaddle(paddle, ball, new Point(paddle.x, paddle.y));
+            oldPaddle = updatedPaddles[0];
+            paddle = updatedPaddles[1];
+            unionPaddle = updatedPaddles[2];
         }
         public void mouseDragged(MouseEvent e) {
         }
