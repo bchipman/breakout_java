@@ -42,12 +42,13 @@ public class Globals {
     public static final boolean PRINT_PADDLE_BALL_COLLISION_INFO = false;
     public static String PADDLE_BALL_COLLISION_INFO = null;
 
+    public static Color BLOCK_COLOR_0 = Color.DARK_GRAY.darker();
     public static Color BLOCK_COLOR_1 = Color.GREEN.darker();
     public static Color BLOCK_COLOR_2 = Color.BLUE;
     public static Color BLOCK_COLOR_3 = Color.ORANGE;
     public static Color BLOCK_COLOR_4 = Color.MAGENTA.darker();
 
-    public static final Color blockColors[] = {BLOCK_COLOR_1, BLOCK_COLOR_2, BLOCK_COLOR_3, BLOCK_COLOR_4};
+    public static final Color blockColors[] = {BLOCK_COLOR_0, BLOCK_COLOR_1, BLOCK_COLOR_2, BLOCK_COLOR_3, BLOCK_COLOR_4};
 
     public static Color randomBlockColor() {
         Random rand = new Random();

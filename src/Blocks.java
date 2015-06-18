@@ -14,6 +14,7 @@ public class Blocks {
 
     public Blocks() {
         colorHitPointsMap = new HashMap<>();
+        colorHitPointsMap.put(Globals.BLOCK_COLOR_0, 10000);
         colorHitPointsMap.put(Globals.BLOCK_COLOR_1, 1);
         colorHitPointsMap.put(Globals.BLOCK_COLOR_2, 2);
         colorHitPointsMap.put(Globals.BLOCK_COLOR_3, 3);
