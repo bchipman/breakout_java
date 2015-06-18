@@ -50,7 +50,7 @@ public class Physics {
         boolean ballTopSideHit = paddle.contains(ball.getTopLeft()) && paddle.contains(ball.getTopRight());
         boolean ballBottomSideHit = paddle.contains(ball.getBottomLeft()) && paddle.contains(ball.getBottomRight());
 
-        Axis largerChange = Math.abs(paddle.getxVel()) > Math.abs(paddle.getyVel()) ? Axis.X : Axis.Y;
+        Axis largerChange = paddle.getxSpeed() > paddle.getySpeed() ? Axis.X : Axis.Y;
         String collisionInfo = null;
 
 

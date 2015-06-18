@@ -49,6 +49,12 @@ public class MovingRect extends Rect {
         return movingRight() && movingDown();
     }
 
+    public int getxSpeed() {
+        return Math.abs(xVel);
+    }
+    public int getySpeed() {
+        return Math.abs(yVel);
+    }
 
     public int getxVel() {
         return xVel;
