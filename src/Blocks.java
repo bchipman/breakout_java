@@ -22,7 +22,7 @@ public class Blocks {
 
         blocks = new ArrayList<>();
 
-        for (int j=0; j<Globals.WINDOW_HEIGHT/2; j+=Globals.BLOCK_HEIGHT) { // y
+        for (int j=Globals.WINDOW_HEIGHT/4; j<Globals.WINDOW_HEIGHT/2; j+=Globals.BLOCK_HEIGHT) { // y
             for (int i=0; i<Globals.WINDOW_WIDTH; i+=Globals.BLOCK_WIDTH) { // x
                 Color randColor = Globals.randomBlockColor();
                 blocks.add(new Block(i, j, Globals.BLOCK_WIDTH, Globals.BLOCK_HEIGHT, randColor, colorHitPointsMap.get(randColor)));

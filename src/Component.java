@@ -167,6 +167,7 @@ public class Component extends JComponent {
         }
 
         if (Globals.DEBUG_TEXT_ON) {
+            g2.setColor(Color.WHITE);
             drawDebugText(g2);
         }
 
@@ -215,6 +216,10 @@ public class Component extends JComponent {
         g2.drawString(ballLeft, ballX, ballY + 15);
         g2.drawString(ballRight, ballX + 50, ballY + 15);
         g2.drawString(ballBottom, ballX + 25, ballY + 30);
+
+        g2.drawString("ball velocity", ballX+150, ballY - 15);
+        g2.drawString(String.valueOf(ball.getxVel()), ballX+150+25, ballY);
+        g2.drawString(String.valueOf(ball.getyVel()), ballX+150+25, ballY+30);
 
     }
 
