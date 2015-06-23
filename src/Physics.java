@@ -1,4 +1,4 @@
-import java.awt.*;
+import java.awt.geom.Point2D;
 
 /**
  Created by Brian on 6/3/2015.
@@ -12,7 +12,7 @@ public class Physics {
 
     // -------------------------------------------------------------------------
 
-    public static Paddle[] movePaddle(Paddle paddle, Ball ball, Point mousePos) {
+    public static Paddle[] movePaddle(Paddle paddle, Ball ball, Point2D.Double mousePos) {
         if (Globals.PADDLE_HORIZONTAL_MOVEMENT_ONLY) {
             paddle.setLocation(mousePos.x, paddle.y);
         } else if (Globals.PADDLE_VERTICAL_MOVEMENT_ONLY) {
