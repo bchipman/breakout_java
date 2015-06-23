@@ -128,7 +128,11 @@ public class Physics {
     // -------------------------------------------------------------------------
 
     public static void moveBall(Ball ball, Paddle paddle, Blocks blocks) {
-        ball.translate((int) ball.getxVel(), (int) ball.getyVel());
+        //ball.translate((int) ball.getxVel(), (int) ball.getyVel());
+        ball.x += ball.getxVel();
+        ball.y += ball.getyVel();
+        ball.update();
+
         handleCollision(ball);
         if (Globals.COLLISION_ON) {
             handleCollision(ball, paddle);
@@ -169,7 +173,7 @@ public class Physics {
 
         // Ball's BOTTOM hit
         else if (bottomLeftHit || bottomRightHit) {
-            int xSize, xHit;
+            double xSize, xHit;
 
 
             // Ball's left side hanging over edge
@@ -194,12 +198,12 @@ public class Physics {
                 xHit = (xSize / 2) + ball.getLeftEdge();
             }
 
-            Globals.BALL_PADDLE_COLLISION_X = xHit;
-            Globals.BALL_PADDLE_COLLISION_Y = ball.getBottomEdge();
+            Globals.BALL_PADDLE_COLLISION_X = (int) Math.round(xHit);
+            Globals.BALL_PADDLE_COLLISION_Y = (int) Math.round(ball.getBottomEdge());
             Globals.BALL_PADDLE_COLLISION_NUM_FRAMES_DISPLAY = 50;
 
             // Determine ball's new velocity depending on where ball hit on paddle
-            double howFarInRel = (double) (xHit - paddle.getLeftEdge()) / paddle.getWidth();
+            double howFarInRel = (xHit - paddle.getLeftEdge()) / paddle.getWidth();
             System.out.printf("howFarInRel: %.2f\n", howFarInRel);
 
             if (howFarInRel < 0.10) {
