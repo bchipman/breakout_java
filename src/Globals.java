@@ -31,8 +31,8 @@ public class Globals {
     public static final int BALL_SIZE = 10;
     public static final int BALL_X_POSITION = PADDLE_X_POSITION + PADDLE_LENGTH / 2 - BALL_SIZE / 2;
     public static final int BALL_Y_POSITION = PADDLE_Y_POSITION - BALL_SIZE;
-    public static final int BALL_X_VELOCITY = 1;
-    public static final int BALL_Y_VELOCITY = -2;
+    public static final double BALL_X_VELOCITY = 1.3;
+    public static final double BALL_Y_VELOCITY = -2.2;
 
     public static int BALL_PADDLE_COLLISION_X;
     public static int BALL_PADDLE_COLLISION_Y;

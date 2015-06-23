@@ -191,15 +191,15 @@ public class Component extends JComponent {
         g2.drawString("Pause: " + Globals.PAUSE_TIME, 10, 10);
         g2.drawString("Collision: " + Globals.COLLISION_ON, 10, 25);
 
-        String paddleTop = String.valueOf(paddle.getTopEdge());
-        String paddleLeft = String.valueOf(paddle.getLeftEdge());
-        String paddleRight = String.valueOf(paddle.getRightEdge());
-        String paddleBottom = String.valueOf(paddle.getBottomEdge());
+        String paddleTop = String.format("%.2f",paddle.getTopEdge());
+        String paddleLeft = String.format("%.2f",paddle.getLeftEdge());
+        String paddleRight = String.format("%.2f",paddle.getRightEdge());
+        String paddleBottom = String.format("%.2f",paddle.getBottomEdge());
 
-        String ballTop = String.valueOf(ball.getTopEdge());
-        String ballLeft = String.valueOf(ball.getLeftEdge());
-        String ballRight = String.valueOf(ball.getRightEdge());
-        String ballBottom = String.valueOf(ball.getBottomEdge());
+        String ballTop = String.format("%.2f",ball.getTopEdge());
+        String ballLeft = String.format("%.2f",ball.getLeftEdge());
+        String ballRight = String.format("%.2f",ball.getRightEdge());
+        String ballBottom = String.format("%.2f",ball.getBottomEdge());
 
         int paddleX = 150;
         int paddleY = 35;
@@ -219,8 +219,8 @@ public class Component extends JComponent {
         g2.drawString(ballBottom, ballX + 25, ballY + 30);
 
         g2.drawString("ball velocity", ballX+150, ballY - 15);
-        g2.drawString(String.valueOf(ball.getxVel()), ballX+150+25, ballY);
-        g2.drawString(String.valueOf(ball.getyVel()), ballX+150+25, ballY+30);
+        g2.drawString(String.format("%.2f", ball.getxVel()), ballX+150+25, ballY);
+        g2.drawString(String.format("%.2f", ball.getyVel()), ballX+150+25, ballY+30);
 
     }
 
