@@ -23,6 +23,12 @@ public class MovingRectDouble extends RectDouble {
         yVel = yStartVel;
     }
 
+    public void translate() {
+        x += xVel;
+        y += yVel;
+        update();
+    }
+
     public boolean movingLeft() {
         return xVel < 0;
     }

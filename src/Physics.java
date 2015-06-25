@@ -128,10 +128,7 @@ public class Physics {
     // -------------------------------------------------------------------------
 
     public static void moveBall(Ball ball, Paddle paddle, Blocks blocks) {
-        //ball.translate((int) ball.getxVel(), (int) ball.getyVel());
-        ball.x += ball.getxVel();
-        ball.y += ball.getyVel();
-        ball.update();
+        ball.translate();
 
         handleCollision(ball);
         if (Globals.COLLISION_ON) {
