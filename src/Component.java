@@ -78,7 +78,7 @@ public class Component extends JComponent {
         public void mouseEntered(MouseEvent e) {
         }
         public void mouseExited(MouseEvent e) {
-            Paddle[] updatedPaddles = Physics.movePaddle(paddle, ball, new Point2D.Double(paddle.x, paddle.y));
+            Paddle[] updatedPaddles = paddle.movePaddle(ball, new Point2D.Double(paddle.x, paddle.y));
             oldPaddle = updatedPaddles[0];
             paddle = updatedPaddles[1];
             unionPaddle = updatedPaddles[2];
@@ -86,7 +86,7 @@ public class Component extends JComponent {
         public void mouseDragged(MouseEvent e) {
         }
         public void mouseMoved(MouseEvent e) {
-            Paddle[] updatedPaddles = Physics.movePaddle(paddle, ball, new Point2D.Double(e.getX(), Globals.PADDLE_Y_POSITION));
+            Paddle[] updatedPaddles = paddle.movePaddle(ball, new Point2D.Double(e.getX(), Globals.PADDLE_Y_POSITION));
             oldPaddle = updatedPaddles[0];
             paddle = updatedPaddles[1];
             unionPaddle = updatedPaddles[2];
