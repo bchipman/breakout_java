@@ -10,6 +10,10 @@ public class Paddle extends MovingRectDouble {
         X, Y
     }
 
+    public Paddle() {
+        super(0,0,0,0);
+    }
+
     public Paddle(double startX, double startY, double width, double height) {
         super(startX, startY, width, height);
     }
@@ -54,10 +58,26 @@ public class Paddle extends MovingRectDouble {
             setLocation(mousePos.x, mousePos.y);
         }
 
+        // Used for ghost paddle bug fix (see a few lines below)
+        double adjWidth = width;
+        if (getRightEdge() >= Globals.WINDOW_RIGHT_EDGE) {
+            adjWidth = (Globals.WINDOW_RIGHT_EDGE - getLeftEdge()) / 2.0;
+            adjWidth = adjWidth < 0 ? 0 : adjWidth;
+            System.out.println("adj width: " + adjWidth);
+        }
+
         handleCollision();
 
-        Paddle oldPaddle = new Paddle(this, (int) (x-getxVel()), (int) (y-getyVel()));
-        Paddle unionPaddle = union(oldPaddle);
+        // Fix for bug where ghost paddle would extend from left of paddle when
+        //  paddle was up against the right wall but the mouse was still within the window.
+        Paddle oldPaddle, unionPaddle;
+        if (adjWidth != width) {
+            oldPaddle = new Paddle();
+            unionPaddle = new Paddle();
+        } else {
+            oldPaddle = new Paddle(x - getxVel(), y - getyVel(), adjWidth, height);
+            unionPaddle = union(oldPaddle);
+        }
 
         if (Globals.COLLISION_ON) {
             handleCollision(unionPaddle, ball);

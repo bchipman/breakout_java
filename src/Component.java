@@ -141,10 +141,10 @@ public class Component extends JComponent {
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
 
-        g2.setColor(Color.GREEN.darker().darker());
+        g2.setColor(Color.WHITE);
         g2.fill(unionPaddle);
 
-        g2.setColor(Color.GREEN.darker().darker().darker());
+        g2.setColor(Color.BLACK);
         g2.fill(oldPaddle);
 
         g2.setColor(Color.GREEN.darker());
