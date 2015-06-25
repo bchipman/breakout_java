@@ -198,34 +198,33 @@ public class Physics {
                 xHit = (xSize / 2) + ball.getLeftEdge();
             }
 
+            // Set global variables for displaying red dot on paddle where collision occurred
             Globals.BALL_PADDLE_COLLISION_X = (int) Math.round(xHit);
             Globals.BALL_PADDLE_COLLISION_Y = (int) Math.round(ball.getBottomEdge());
             Globals.BALL_PADDLE_COLLISION_NUM_FRAMES_DISPLAY = 50;
 
             // Determine ball's new velocity depending on where ball hit on paddle
-            double howFarInRel = (xHit - paddle.getLeftEdge()) / paddle.getWidth();
-            System.out.printf("howFarInRel: %.2f\n", howFarInRel);
+            double ballCenter = ball.getLeftEdge() + ball.width / 2.0;
+            double paddleCenter = paddle.getLeftEdge() + paddle.width / 2.0;
+            double newxVel = (ballCenter - paddleCenter) / (paddle.width / 2.0);
 
-            if (howFarInRel < 0.10) {
-                ball.setxVel(2);
-                ball.setxDir(Globals.Dir.LEFT);
-            }
-            else if (howFarInRel >= 0.10 && howFarInRel < 0.45) {
-                ball.setxVel(1);
-                ball.setxDir(Globals.Dir.LEFT);
-            }
-            else if (howFarInRel >= 0.45 && howFarInRel < 0.55) {
-                ball.setxVel(0);
-            }
-            else if (howFarInRel >= 0.55 && howFarInRel < 0.90) {
-                ball.setxVel(1);
-                ball.setxDir(Globals.Dir.RIGHT);
-            }
-            else if (howFarInRel >= 0.90) {
-                ball.setxVel(2);
-                ball.setxDir(Globals.Dir.RIGHT);
-            }
-            ball.setyDir(Globals.Dir.UP);
+            // allow max/min angles of 22.5 degrees instead of 45
+            newxVel *= 2;
+
+            // Normalize vector
+            double vectorLength = Math.sqrt((newxVel*newxVel) + (-1.0*-1.0));
+            double newxVelNormalized = newxVel / vectorLength;
+            double newyVelNormalized = -1 / vectorLength;
+
+            // Set new velocity (multiply by 3 just to increase speeds overall)
+            ball.setxVel(newxVelNormalized*3);
+            ball.setyVel(newyVelNormalized*3);
+
+            System.out.printf("ballCenter: %.3f\n", ballCenter);
+            System.out.printf("paddleCenter: %.3f\n", paddleCenter);
+            System.out.printf("vectorLength: %.3f\n", vectorLength);
+            System.out.printf("newxVel: %.3f,  newyVel: %.3f\n", newxVel, -1.0);
+            System.out.printf("newxVelN: %.3f,  newyVelN: %.3f\n", newxVelNormalized, newyVelNormalized);
         }
 
         // Ball's TOP hit
