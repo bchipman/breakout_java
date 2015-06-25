@@ -221,6 +221,9 @@ public class Component extends JComponent {
         g2.drawString("ball velocity", ballX+150, ballY - 15);
         g2.drawString(String.format("%.2f", ball.getxVel()), ballX+150+25, ballY);
         g2.drawString(String.format("%.2f", ball.getyVel()), ballX+150+25, ballY+30);
+        double mag = Math.sqrt((ball.getxVel()*ball.getxVel()) + (ball.getyVel() + ball.getyVel()));
+        g2.drawString(String.format("%.2f", mag), ballX+150+50, ballY+15);
+
 
     }
 
