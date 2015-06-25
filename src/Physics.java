@@ -201,9 +201,7 @@ public class Physics {
             Globals.BALL_PADDLE_COLLISION_NUM_FRAMES_DISPLAY = 50;
 
             // Determine ball's new velocity depending on where ball hit on paddle
-            double ballCenter = ball.getLeftEdge() + ball.width / 2.0;
-            double paddleCenter = paddle.getLeftEdge() + paddle.width / 2.0;
-            double newxVel = (ballCenter - paddleCenter) / (paddle.width / 2.0);
+            double newxVel = (ball.getxCenter() - paddle.getxCenter()) / (paddle.width / 2.0);
 
             // allow max/min angles of 22.5 degrees instead of 45
             newxVel *= 2;
@@ -216,12 +214,6 @@ public class Physics {
             // Set new velocity (multiply by 3 just to increase speeds overall)
             ball.setxVel(newxVelNormalized*3);
             ball.setyVel(newyVelNormalized*3);
-
-            System.out.printf("ballCenter: %.3f\n", ballCenter);
-            System.out.printf("paddleCenter: %.3f\n", paddleCenter);
-            System.out.printf("vectorLength: %.3f\n", vectorLength);
-            System.out.printf("newxVel: %.3f,  newyVel: %.3f\n", newxVel, -1.0);
-            System.out.printf("newxVelN: %.3f,  newyVelN: %.3f\n", newxVelNormalized, newyVelNormalized);
         }
 
         // Ball's TOP hit
