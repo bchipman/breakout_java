@@ -9,8 +9,6 @@ public class RectDouble extends Rectangle2D.Double {
 
     //public double x;
     //public double y;
-    private int xDrawPos;
-    private int yDrawPos;
     private double leftEdge;
     private double rightEdge;
     private double topEdge;
@@ -43,16 +41,10 @@ public class RectDouble extends Rectangle2D.Double {
     public void update() {
         updateEdges();
         updatePoints();
-        updatePixelPosition();
     }
 
     //public void setLocation(int newX, int newY) {
     //    super.setLocation(newX, newY);
-    //    update();
-    //}
-
-    //public void translate(int dx, int dy) {
-    //    super.translate(dx, dy);
     //    update();
     //}
 
@@ -68,11 +60,6 @@ public class RectDouble extends Rectangle2D.Double {
         topRight = new Point2D.Double(rightEdge, topEdge);
         bottomLeft = new Point2D.Double(leftEdge, bottomEdge);
         bottomRight = new Point2D.Double(rightEdge, bottomEdge);
-    }
-
-    private void updatePixelPosition() {
-        xDrawPos = (int) Math.round(x);
-        yDrawPos = (int) Math.round(y);
     }
 
     public double getLeftEdge() {
