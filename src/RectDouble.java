@@ -65,6 +65,13 @@ public class RectDouble extends Rectangle2D.Double {
         yCenter = topEdge + (height / 2.0);
     }
 
+    public double getxCenter() {
+        return xCenter;
+    }
+    public double getyCenter() {
+        return yCenter;
+    }
+
     public double getLeftEdge() {
         return leftEdge;
     }
