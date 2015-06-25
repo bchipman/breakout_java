@@ -9,6 +9,8 @@ public class RectDouble extends Rectangle2D.Double {
 
     //public double x;
     //public double y;
+    private double xCenter;
+    private double yCenter;
     private double leftEdge;
     private double rightEdge;
     private double topEdge;
@@ -41,12 +43,8 @@ public class RectDouble extends Rectangle2D.Double {
     public void update() {
         updateEdges();
         updatePoints();
+        updateCenter();
     }
-
-    //public void setLocation(int newX, int newY) {
-    //    super.setLocation(newX, newY);
-    //    update();
-    //}
 
     private void updateEdges() {
         leftEdge = x;
@@ -60,6 +58,11 @@ public class RectDouble extends Rectangle2D.Double {
         topRight = new Point2D.Double(rightEdge, topEdge);
         bottomLeft = new Point2D.Double(leftEdge, bottomEdge);
         bottomRight = new Point2D.Double(rightEdge, bottomEdge);
+    }
+
+    private void updateCenter() {
+        xCenter = leftEdge + (width / 2.0);
+        yCenter = topEdge + (height / 2.0);
     }
 
     public double getLeftEdge() {
