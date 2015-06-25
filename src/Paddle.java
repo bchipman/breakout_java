@@ -45,7 +45,7 @@ public class Paddle extends MovingRectDouble {
     // -----------------------------------------------------------------------------
 
 
-    public Paddle[] movePaddle(Ball ball, Point2D.Double mousePos) {
+    public Paddle[] move(Ball ball, Point2D.Double mousePos) {
         if (Globals.PADDLE_HORIZONTAL_MOVEMENT_ONLY) {
             setLocation(mousePos.x, y);
         } else if (Globals.PADDLE_VERTICAL_MOVEMENT_ONLY) {
