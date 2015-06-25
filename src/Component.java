@@ -119,7 +119,8 @@ public class Component extends JComponent {
             public void run() {
                 while (true) {
                     if (Globals.BALL_MOVEMENT_ON) {
-                        Physics.moveBall(ball, unionPaddle, blocks);
+                        ball.move(unionPaddle, blocks);
+
                     }
                     repaint();
                     pause(Globals.PAUSE_TIME);
