@@ -1,9 +1,7 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-/**
- Created by Brian on 5/15/2015.
- */
+
 public class Main {
 
     public static void main(String[] args) {

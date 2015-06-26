@@ -6,9 +6,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 
-/**
- Created by Brian on 5/28/2015.
- */
+
 public class Component extends JComponent {
 
     private Paddle oldPaddle;

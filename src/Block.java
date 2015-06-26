@@ -1,5 +1,6 @@
 import java.awt.*;
 
+
 public class Block extends RectDouble {
 
     private Color color;

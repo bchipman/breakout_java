@@ -2,9 +2,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-/**
- Created by Brian on 5/28/2015.
- */
+
 public class RectDouble extends Rectangle2D.Double {
 
     //public double x;

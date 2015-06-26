@@ -1,9 +1,7 @@
 import java.awt.*;
 import java.util.Random;
 
-/**
- Created by Brian on 5/28/2015.
- */
+
 public class Globals {
     public static final int SET_WINDOW_WIDTH = 700;
     public static final int SET_WINDOW_HEIGHT = 500;

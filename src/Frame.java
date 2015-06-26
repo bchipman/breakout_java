@@ -1,9 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-/**
- Created by Brian on 5/27/2015.
- */
+
 public class Frame extends JFrame {
 
     public Frame(String title) {

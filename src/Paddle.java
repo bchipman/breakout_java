@@ -1,9 +1,7 @@
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-/**
- Created by Brian on 5/28/2015.
- */
+
 public class Paddle extends MovingRectDouble {
 
     private enum Axis {

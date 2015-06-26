@@ -1,8 +1,5 @@
 import java.awt.geom.Point2D;
 
-/**
- Created by Brian on 6/2/2015.
- */
 
 public class MovingRectDouble extends RectDouble {
 
